@@ -2,23 +2,17 @@ package hacs;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import java.util.*;
+import java.awt.event.ActionEvent;
+import java.util.Date;
 
 /**
  * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
- * 
+ *
  * @author Zhang ji Zhu Wei
  * @version 1.0
  */
 
 public class StudentAssignmentMenu extends AssignmentMenu {
-
-////  class AssignmentMenu
-	private boolean boolSubmit = false;
-	private Solution theSolution;
-	private Assignment theAssignment;
 
 	JLabel lAssignmentName = new JLabel();
 	JLabel lDueDate = new JLabel();
@@ -27,12 +21,14 @@ public class StudentAssignmentMenu extends AssignmentMenu {
 	JLabel lGrade = new JLabel();
 	JButton bSubmit = new JButton();
 	JButton bCancel = new JButton();
-
 	JLabel jLabel1 = new JLabel();
 	JLabel jLabel3 = new JLabel();
 	JLabel jLabel5 = new JLabel();
 	JLabel jLabel6 = new JLabel();
 	JLabel jLabel7 = new JLabel();
+	private boolean boolSubmit = false;
+	private Solution theSolution;
+	private Assignment theAssignment;
 
 	public StudentAssignmentMenu() {
 		try {

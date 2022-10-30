@@ -1,22 +1,21 @@
 package hacs;
 
-import javax.swing.*;
-
 import hacs.UserInfoItem.USER_TYPE;
 
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
+import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 /**
  * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
- * 
+ *
  * @author Zhang ji Zhu Wei
- * @version 1.0
  * @author mjfindler
  * @version 2.0
- * 
- *          Update to Java 8
+ * <p>
+ * Update to Java 8
  */
 
 public class Login extends JDialog {
@@ -31,9 +30,10 @@ public class Login extends JDialog {
 	JRadioButton StudentRadio = new JRadioButton();
 	JRadioButton InstructorRadio = new JRadioButton();
 	ButtonGroup buttonGroup1 = new ButtonGroup();
-////// Attributes Added By me
+
 	private String UserBox = null;
-	private USER_TYPE UserType = USER_TYPE.Student; // default to Student
+	// default to Student
+	private USER_TYPE UserType = USER_TYPE.Student;
 
 	public Login() {
 		try {
@@ -88,13 +88,11 @@ public class Login extends JDialog {
 		m_bExit = false;
 		System.out.println("login clicked");
 		try {
-			if (StudentRadio.isSelected() == true)//// student
-			{
-				UserType = USER_TYPE.Student; /// 0 for student
+			if (StudentRadio.isSelected() == true) {
+				UserType = USER_TYPE.Student;
 				file = new BufferedReader(new FileReader("StuInfo.txt"));
-			} else// instructor
-			{
-				UserType = USER_TYPE.Instructor; // 1 for instructor
+			} else {
+				UserType = USER_TYPE.Instructor;
 				file = new BufferedReader(new FileReader("InsInfor.txt"));
 			}
 			UserBox = UserNameText.getText();

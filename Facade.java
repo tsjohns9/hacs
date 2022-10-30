@@ -1,24 +1,24 @@
 package hacs;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 /**
  * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
- * 
+ *
  * @author Zhang ji Zhu Wei
- * @version 1.0
  * @author mjfindler
  * @version 2.0
- * 
- *          Update to Jave 8
+ * <p>
+ * Update to Jave 8
  */
 
 public class Facade {
 	public int UserType;
-	private Course theSelecteCourse = null;
-	private int nCourseLevel = 0;
 	ClassCourseList theCourseList;
 	Person thePerson;
+	private Course theSelecteCourse = null;
+	private int nCourseLevel = 0;
 
 	public Facade() {
 	}
@@ -32,8 +32,7 @@ public class Facade {
 		return login.isExit();
 	}
 
-/////////////////////////
-//functions for CourseMenu
+	//functions for CourseMenu
 	/*
 	 * When click the add button of the CourseMenu , call this function this
 	 * function will new an assignment fill the required infomation this function
@@ -44,8 +43,8 @@ public class Facade {
 
 	void AddAssignment(Course theCourse) {
 		AssignmentMenu theAssignmentMenu;
-		if (thePerson.type == 0)/// student
-		{
+		// student
+		if (thePerson.type == 0) {
 			theAssignmentMenu = new StudentAssignmentMenu();
 		} else {
 			theAssignmentMenu = new InstructorAssignmentMenu();
@@ -64,8 +63,8 @@ public class Facade {
 	 */
 	void ViewAssignment(Assignment theAssignment) {
 		AssignmentMenu theAssignmentMenu;
-		if (thePerson.type == 0)/// student
-		{
+		// student
+		if (thePerson.type == 0) {
 			theAssignmentMenu = new StudentAssignmentMenu();
 		} else {
 			theAssignmentMenu = new InstructorAssignmentMenu();
@@ -74,7 +73,7 @@ public class Facade {
 		theAssignmentMenu.ShowMenu(theAssignment, thePerson);
 	}
 
-//functions for InstructorAssignmentMenu
+	// functions for InstructorAssignmentMenu
 	/*
 	 * this function will grade the give Solution: theSolution this function calls
 	 */
@@ -94,25 +93,22 @@ public class Facade {
 			theSolution = (Solution) theSolutionIterator.next();
 		}
 	}
-////////////////////
 
-//functions for StudentAssignmentMenu
+	// functions for StudentAssignmentMenu
 	void SubmitSolution(Assignment theAssignment, Solution theSolution) {
 		theAssignment.AddSolution(theSolution);
 	}
 
-//////////
 	void Remind() {
 		Reminder theReminder = new Reminder();
 		theReminder.showReminder(thePerson.GetCourseList());
 	}
 
 	void CreateUser(UserInfoItem userinfoitem) {
-		if (userinfoitem.UserType == UserInfoItem.USER_TYPE.Student) /// student
-		{
+		// student
+		if (userinfoitem.UserType == UserInfoItem.USER_TYPE.Student) {
 			thePerson = new Student();
-		} else /// instructor
-		{
+		} else {
 			thePerson = new Instructor();
 		}
 		thePerson.UserName = userinfoitem.strUserName;
@@ -136,15 +132,15 @@ public class Facade {
 		try {
 			file = new BufferedReader(new FileReader("UserCourse.txt"));
 			String aline, strUserName, strCourseName;
-			while ((aline = file.readLine()) != null) // not the EOF
-			{
+			// not the EOF
+			while ((aline = file.readLine()) != null) {
 				strUserName = GetUserName(aline);
 				strCourseName = GetCourseName(aline);
-				if (strUserName.compareTo(thePerson.UserName) == 0) /// the UserName mateches
-				{
+				// the UserName mateches
+				if (strUserName.compareTo(thePerson.UserName) == 0) {
 					theSelecteCourse = FindCourseByCourseName(strCourseName);
-					if (theSelecteCourse != null) /// Find the Course in the CourseList--->attach
-					{
+					// Find the Course in the CourseList--->attach
+					if (theSelecteCourse != null) {
 						thePerson.AddCourse(theSelecteCourse);
 					}
 				}
@@ -192,7 +188,8 @@ public class Facade {
 
 	public boolean CourseOperation() {
 		thePerson.CreateCourseMenu(theSelecteCourse, nCourseLevel);
-		return thePerson.ShowMenu();//// 0: logout 1 select an other course
+		// 0: logout 1 select another course
+		return thePerson.ShowMenu();
 	}
 
 	/*

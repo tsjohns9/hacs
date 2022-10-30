@@ -2,11 +2,11 @@ package hacs;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 
 /**
  * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
- * 
+ *
  * @author Zhang ji Zhu Wei
  * @version 1.0
  */
@@ -80,8 +80,8 @@ public class CourseSelectDlg extends JDialog {
 		theCourseList = courseList;
 		CourseIterator theIterator = new CourseIterator(theCourseList);
 		Course theCourse;
-		while ((theCourse = (Course) theIterator.next()) != null) /// end of the list
-		{
+		// end of the list
+		while ((theCourse = (Course) theIterator.next()) != null) {
 			CourseNameCom.addItem(theCourse);
 		}
 		show();
@@ -91,9 +91,11 @@ public class CourseSelectDlg extends JDialog {
 	void OKButton_actionPerformed(ActionEvent e) {
 		SelectedCourse = (Course) CourseNameCom.getSelectedItem();
 		if (HighLevelRadio.isSelected())
-			nCourseLevel = 0; // highlevel course: 0
+			// highlevel course: 0
+			nCourseLevel = 0;
 		else
-			nCourseLevel = 1; // lowlevel course: 1
+			// lowlevel course: 1
+			nCourseLevel = 1;
 		hide();
 	}
 

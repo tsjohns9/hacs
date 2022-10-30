@@ -1,12 +1,12 @@
 package hacs;
 
-import java.util.*;
+import java.util.Iterator;
 
 /**
  * Title: HACS Description: CSE870 Homework 3: Implementing Design Patterns
  * Copyright: Copyright (c) 2002 Company: Department of Computer Science and
  * Engineering, Michigan State University
- * 
+ *
  * @author Ji Zhang, Wei Zhu
  * @version 1.0
  */
@@ -52,7 +52,7 @@ abstract public class Person {
 	// show the assignment list
 	public boolean ShowMenu() {
 		// create a iterator for the assignment list
-//    Iterator theIter=new ListIterator(CurrentCourse.AssList );
+		// Iterator theIter=new ListIterator(CurrentCourse.AssList );
 		Iterator theIter = CurrentCourse.assignmentList.iterator();
 		theCourseMenu.theCourse = CurrentCourse;
 		Assignment theAssignment;

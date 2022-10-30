@@ -1,13 +1,13 @@
 package hacs;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
-import java.io.*;
 
 /**
  * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
- * 
+ *
  * @author Zhang ji Zhu Wei
- * @version 1.0
  * @author mjfindler
  * @version 2.0 update to Java 8
  */
@@ -17,7 +17,7 @@ public class ClassCourseList extends ArrayList<Course> {
 	public ClassCourseList() {
 	}
 
-	//// initialize the list by reading from the file.
+	// initialize the list by reading from the file.
 	void InitializeFromFile(String theFileName) {
 		try {
 			BufferedReader file;
@@ -26,7 +26,7 @@ public class ClassCourseList extends ArrayList<Course> {
 			while ((strCourseName = file.readLine()) != null) {
 				Course theCourse;
 				theCourse = new Course(strCourseName, 0);
-//      theCourse.CourseName= strCourseName;
+				//				theCourse.CourseName= strCourseName;
 				add(theCourse);
 			}
 		} catch (Exception ee) {
