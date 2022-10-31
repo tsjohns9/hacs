@@ -96,7 +96,7 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 
 	public void showMenu(Assignment assignment, Person person) {
 		theAssignment = assignment;
-		assignmentName.setText(theAssignment.assignmentName);
+		assignmentName.setText(theAssignment.getAssignmentName());
 
 		DateFormat theDateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 		textFieldDueDate.setText(theDateFormat.format(theAssignment.dueDate));
@@ -106,7 +106,7 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 	}
 
 	void buttonClose(ActionEvent e) {
-		theAssignment.assignmentName = assignmentName.getText();
+		theAssignment.setAssignmentName(assignmentName.getText());
 		DateFormat tempDateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 		try {
 			theAssignment.dueDate = tempDateFormat.parse(textFieldDueDate.getText());

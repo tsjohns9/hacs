@@ -51,7 +51,6 @@ abstract public class Person {
 
 	// show the assignment list
 	public boolean showMenu() {
-		// create a iterator for the assignment list
 		Iterator<Assignment> assignmentIterator = currentCourse.assignmentList.iterator();
 		theCourseMenu.course = currentCourse;
 		Assignment theAssignment;

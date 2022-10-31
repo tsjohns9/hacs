@@ -24,9 +24,6 @@ public class ReminderVisitor extends NodeVisitor {
 
 	Reminder reminder;
 
-	public ReminderVisitor() {
-	}
-
 	public ReminderVisitor(Reminder reminder) {
 		this.reminder = reminder;
 	}
@@ -54,11 +51,11 @@ public class ReminderVisitor extends NodeVisitor {
 		int nDueDate = calendar.get(Calendar.DAY_OF_YEAR);
 		// upcoming
 		if (nDueDate <= (ntoday + 1) && nDueDate >= ntoday) {
-			reminder.listUpcoming.add("today is " + today + " " + assignment.assignmentName + " Due Date is "
+			reminder.listUpcoming.add("today is " + today + " " + assignment.getAssignmentName() + " Due Date is "
 					+ assignment.getDueDateString());
 		}
 		if (nDueDate < ntoday) {
-			reminder.listOverdue.add(assignment.assignmentName + " Due Date is " + assignment.getDueDateString());
+			reminder.listOverdue.add(assignment.getAssignmentName() + " Due Date is " + assignment.getDueDateString());
 		}
 
 	}

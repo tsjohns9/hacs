@@ -12,7 +12,6 @@ import java.awt.event.ActionEvent;
  */
 
 public class CourseSelectDlg extends JDialog {
-	// 0 HighLevel presentation 1 LowLevel Experiment
 	ClassCourseList courseList;
 	Course selectedCourse;
 	CourseLevel.COURSE_LEVEL courseLevel = CourseLevel.COURSE_LEVEL.HighLevel;

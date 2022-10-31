@@ -93,7 +93,7 @@ public class StudentAssignmentMenu extends AssignmentMenu {
 			gradeLabel.setText(solution.getGradeString());
 		}
 
-		assignmentNameLabel.setText(assignment.assignmentName);
+		assignmentNameLabel.setText(assignment.getAssignmentName());
 		dueDateLabel.setText(assignment.dueDate.toString());
 		suggestedSolutionLabel.setText(assignment.suggestSolution.solutionFileName);
 

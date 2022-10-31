@@ -1,7 +1,4 @@
-import hacs.Course;
-import hacs.CourseLevel;
-import hacs.CourseMenu;
-import hacs.Student;
+import hacs.*;
 import org.junit.Test;
 import junit.framework.Assert;
 
@@ -12,10 +9,15 @@ public class TestStudent {
 	public void testStudentCreateCourseMenu() {
 		Student student = new Student();
 		Course course = new Course("course-name", CourseLevel.COURSE_LEVEL.HighLevel);
+
+		// method returns a different CourseMenu class depending on the value of level.
+		// type cast to check that the correct class was made.
 		CourseMenu menu = student.createCourseMenu(course, CourseLevel.COURSE_LEVEL.HighLevel);
-		Assertions.assertNotNull(menu);
+		HighLevelCourseMenu highLevelMenu = (HighLevelCourseMenu) menu;
+		Assertions.assertNotNull(highLevelMenu);
 
 		menu = student.createCourseMenu(course, CourseLevel.COURSE_LEVEL.LowLevel);
-		Assertions.assertNotNull(menu);
+		LowLevelCourseMenu lowLevelMenu = (LowLevelCourseMenu) menu;
+		Assertions.assertNotNull(lowLevelMenu);
 	}
 }

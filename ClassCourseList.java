@@ -20,7 +20,7 @@ public class ClassCourseList extends ArrayList<Course> {
 	void initializeFromFile(String fileName) {
 		try {
 			BufferedReader file;
-			String strCourseName = null;
+			String strCourseName;
 			file = new BufferedReader(new FileReader(fileName));
 			while ((strCourseName = file.readLine()) != null) {
 				Course theCourse;

@@ -29,6 +29,10 @@ public class Reminder extends JDialog {
 		}
 	}
 
+	public java.awt.List getListUpcoming() {
+		return listUpcoming;
+	}
+
 	private void jbInit() {
 		upcomingAssignmentsLabel.setText("Upcoming assignments");
 		upcomingAssignmentsLabel.setBounds(new Rectangle(Numbers.n38, Numbers.n40, Numbers.n159, Numbers.n17));

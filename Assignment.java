@@ -15,8 +15,7 @@ import java.util.Date;
 
 public class Assignment {
 
-	protected String assignmentName;
-	protected String assignmentFileName;
+	private String assignmentName;
 	protected Date dueDate = new Date();
 	protected String assignmentSpec;
 	protected SolutionList solutionList = new SolutionList();
@@ -24,6 +23,14 @@ public class Assignment {
 
 
 	public Assignment() {
+	}
+
+	public String getAssignmentName() {
+		return assignmentName;
+	}
+
+	public void setAssignmentName(String name) {
+		this.assignmentName = name;
 	}
 
 	public void setDueDate(Date theDueDate) {
@@ -34,31 +41,27 @@ public class Assignment {
 		this.assignmentSpec = spec;
 	}
 
+	public String getAssignmentSpec() {
+		return this.assignmentSpec;
+	}
+
 	public boolean isOverDue() {
 		Date today;
 		today = new Date();
 		return today.after(this.dueDate);
 	}
 
-	public Solution addSolution() {
-		return new Solution();
-	}
-
 	public void addSolution(Solution theSolution) {
 		solutionList.add(theSolution);
 	}
 
-	public void submitSolution() {
+	public SolutionList getSolutionList() {
+		return solutionList;
 	}
 
-	public void getSolutionList() {
-	}
-
-	/* return the solution of the give name
-	 */
-	public Solution getSolution(String studentname) {
-		SolutionIterator Iterator = (SolutionIterator) solutionList.iterator();
-		return (Solution) Iterator.next(studentname);
+	public Solution getSolution(String studentName) {
+		SolutionIterator Iterator = getSolutionIterator();
+		return (Solution) Iterator.next(studentName);
 	}
 
 	public Solution getSuggestedSolution() {
