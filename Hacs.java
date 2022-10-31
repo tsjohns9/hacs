@@ -21,12 +21,12 @@ public class Hacs {
 				break;
 			}
 
-			facade.CreateUser(userinfoitem);
+			facade.createUser(userinfoitem);
 			facade.attachCourseToUser();
 
 			// if this is a student, then remind him of the due date
 			if (userinfoitem.userType == UserInfoItem.USER_TYPE.Student) {
-				facade.Remind();
+				facade.remind();
 			}
 
 			boolean btnLogout = false;

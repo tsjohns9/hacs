@@ -17,6 +17,10 @@ abstract public class Person {
 		courseList = new ClassCourseList();
 	}
 
+	public UserInfoItem.USER_TYPE getUserType() {
+		return type;
+	}
+
 	abstract public CourseMenu createCourseMenu(Course theCourse, CourseLevel.COURSE_LEVEL courseLevel);
 
 	public void showAddButton() {

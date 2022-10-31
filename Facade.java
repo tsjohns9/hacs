@@ -16,6 +16,10 @@ public class Facade {
 	public Facade() {
 	}
 
+	public Person getPerson() {
+		return person;
+	}
+
 	public boolean login(UserInfoItem userinfoItem) {
 		Login login = new Login();
 		login.setModal(true);
@@ -57,7 +61,7 @@ public class Facade {
 		solutionMenu.ShowMenu(solution);
 	}
 
-	void reportSolutions(Assignment assignment) {
+	public void reportSolutions(Assignment assignment) {
 		Solution theSolution;
 		SolutionIterator theSolutionIterator;
 		theSolutionIterator = assignment.getSolutionIterator();
@@ -68,16 +72,16 @@ public class Facade {
 		}
 	}
 
-	void SubmitSolution(Assignment assignment, Solution solution) {
+	public void submitSolution(Assignment assignment, Solution solution) {
 		assignment.addSolution(solution);
 	}
 
-	void Remind() {
+	void remind() {
 		Reminder theReminder = new Reminder();
 		theReminder.showReminder(person.getCourseList());
 	}
 
-	void CreateUser(UserInfoItem userinfoitem) {
+	public void createUser(UserInfoItem userinfoitem) {
 		if (userinfoitem.userType == UserInfoItem.USER_TYPE.Student) {
 			person = new Student();
 		} else {
@@ -89,12 +93,12 @@ public class Facade {
 	/*
 	 * create a course list and initialize it with the file CourseInfo.txt
 	 */
-	void createCourseList() {
+	public void createCourseList() {
 		courseList = new ClassCourseList();
 		courseList.initializeFromFile("CourseInfo.txt");
 	}
 
-	void attachCourseToUser() {
+	public void attachCourseToUser() {
 		BufferedReader file;
 		try {
 			file = new BufferedReader(new FileReader("UserCourse.txt"));
