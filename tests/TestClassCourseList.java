@@ -1,7 +1,5 @@
-import hacs.Assignment;
 import hacs.ClassCourseList;
 import hacs.Course;
-import hacs.CourseLevel;
 import junit.framework.Assert;
 import org.junit.Test;
 

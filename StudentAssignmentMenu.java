@@ -76,12 +76,12 @@ public class StudentAssignmentMenu extends AssignmentMenu {
 	}
 
 	/*
-	 * check if the student has already had a solution or not. if not , create a new
-	 * solution for the student. after showing the solution attatch the soluiton;
+	 * check if the student has already had a solution or not. if not, create a new
+	 * solution for the student. After showing the solution attach the solution;
 	 */
 	public void showMenu(Assignment assignment, Person person) {
-		SolutionIterator theIter = assignment.getSolutionIterator();
-		Solution solution = (Solution) theIter.next(person.userName);
+		SolutionIterator solutionIterator = assignment.getSolutionIterator();
+		Solution solution = (Solution) solutionIterator.next(person.userName);
 		if (solution == null) {
 			solutionTextField.setText("");
 			gradeLabel.setText("-1");

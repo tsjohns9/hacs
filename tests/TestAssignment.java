@@ -42,7 +42,7 @@ public class TestAssignment {
 		Assignment asn = new Assignment();
 		Solution sol = new Solution();
 		asn.addSolution(sol);
-		sol =	asn.getSolution("abc");
+		sol = asn.getSolution("abc");
 		Assertions.assertNull(sol);
 	}
 
@@ -51,7 +51,7 @@ public class TestAssignment {
 		Assignment asn = new Assignment();
 		Solution sol = new Solution();
 		asn.addSolution(sol);
-		sol =	asn.getSuggestedSolution();
+		sol = asn.getSuggestedSolution();
 		Assertions.assertNotNull(sol);
 	}
 

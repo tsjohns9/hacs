@@ -32,7 +32,7 @@ public class ClassCourseList extends ArrayList<Course> {
 	public Course findCourseByCourseName(String courseName) {
 		for (Course course : this) {
 			Course theCourse;
-			theCourse =  course;
+			theCourse = course;
 			if (theCourse.courseName.compareTo(courseName) == 0)
 				return theCourse;
 		}

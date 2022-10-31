@@ -12,7 +12,6 @@ abstract public class Person {
 	ClassCourseList courseList;
 	CourseMenu theCourseMenu;
 	Course currentCourse;
-	Assignment currentAssignment;
 
 	public Person() {
 		courseList = new ClassCourseList();
@@ -44,7 +43,6 @@ abstract public class Person {
 		return theCourseMenu.ifLogout();
 	}
 
-	// show the assignment list
 	public boolean showMenu() {
 		Iterator<Assignment> assignmentIterator = currentCourse.assignmentList.iterator();
 		theCourseMenu.course = currentCourse;

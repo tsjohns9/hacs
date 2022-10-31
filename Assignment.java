@@ -1,19 +1,19 @@
 package hacs;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 /**
  * @author Zahra Falah
  */
 
-import java.text.DateFormat;
-import java.util.Date;
-
 public class Assignment {
 
-	private String assignmentName;
 	protected Date dueDate = new Date();
 	protected String assignmentSpec;
 	protected SolutionList solutionList = new SolutionList();
 	protected Solution suggestSolution = new Solution();
+	private String assignmentName;
 
 
 	public Assignment() {
@@ -31,12 +31,12 @@ public class Assignment {
 		this.dueDate = theDueDate;
 	}
 
-	public void setAssignmentSpec(String spec) {
-		this.assignmentSpec = spec;
-	}
-
 	public String getAssignmentSpec() {
 		return this.assignmentSpec;
+	}
+
+	public void setAssignmentSpec(String spec) {
+		this.assignmentSpec = spec;
 	}
 
 	public boolean isOverDue() {

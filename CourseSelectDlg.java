@@ -71,7 +71,7 @@ public class CourseSelectDlg extends JDialog {
 	}
 
 	/*
-	 * show the theCourseList in a combox Show the Course type selection button
+	 * show the theCourseList in a comboBox Show the Course type selection button
 	 * return the pointer pointing to the Course object return the Course Type
 	 */
 
@@ -79,7 +79,7 @@ public class CourseSelectDlg extends JDialog {
 		this.courseList = courseList;
 		CourseIterator theIterator = new CourseIterator(this.courseList);
 		Course theCourse;
-		// end of the list
+
 		while ((theCourse = (Course) theIterator.next()) != null) {
 			courseNameComboBox.addItem(theCourse);
 		}

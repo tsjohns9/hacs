@@ -16,10 +16,7 @@ public class CourseIterator implements Iterator {
 	}
 
 	public boolean hasNext() {
-		if (currentCourseNumber >= courseList.size() - 1)
-			return false;
-		else
-			return true;
+		return currentCourseNumber < courseList.size() - 1;
 	}
 
 	public Object next() {

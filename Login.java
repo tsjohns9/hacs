@@ -83,10 +83,10 @@ public class Login extends JDialog {
 			userBox = userNameText.getText();
 			String PasswordBox = new String(passwordText.getPassword());
 			String LoginName = null;
-			String aline = null, UserName = null, Password = null;
-			while ((aline = file.readLine()) != null) {
-				UserName = getUserName(aline);
-				Password = getPassword(aline);
+			String line, UserName, Password;
+			while ((line = file.readLine()) != null) {
+				UserName = getUserName(line);
+				Password = getPassword(line);
 				if (UserName.compareTo(userBox) == 0 && Password.compareTo(PasswordBox) == 0)
 					LoginName = UserName;
 			}
@@ -99,7 +99,7 @@ public class Login extends JDialog {
 	}
 
 	/*
-	 * get the user name from str UserName:Password
+	 * get the username from str UserName:Password
 	 */
 	private String getUserName(String str) {
 		int Sep = str.lastIndexOf(':');

@@ -1,11 +1,10 @@
 package hacs;
 
+import java.awt.*;
+
 /**
  * @author Zahra Falah
  */
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
 
 public class HighLevelCourseMenu extends CourseMenu {
 
@@ -51,7 +50,7 @@ public class HighLevelCourseMenu extends CourseMenu {
 	}
 
 	void showComboBoxes() {
-		assignmentComboBox.setBounds(new Rectangle(Numbers.n140,Numbers.n57, Numbers.n126, Numbers.n22));
+		assignmentComboBox.setBounds(new Rectangle(Numbers.n140, Numbers.n57, Numbers.n126, Numbers.n22));
 
 		optionCombo.setBounds(new Rectangle(Numbers.n137, Numbers.n127, Numbers.n126, Numbers.n22));
 		this.getContentPane().add(assignmentComboBox, null);
@@ -72,7 +71,7 @@ public class HighLevelCourseMenu extends CourseMenu {
 	}
 
 	void showLabel() {
-		assignmentContentLabel.setText("AssigmentContent");
+		assignmentContentLabel.setText("AssignmentContent");
 		assignmentContentLabel.setBounds(new Rectangle(Numbers.n23, Numbers.n186, Numbers.n432, Numbers.n99));
 		this.getContentPane().add(assignmentContentLabel, null);
 	}

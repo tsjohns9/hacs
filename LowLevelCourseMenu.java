@@ -1,10 +1,10 @@
 package hacs;
 
+import java.awt.*;
+
 /**
  * @author Zahra Falah
  */
-
-import java.awt.*;
 
 public class LowLevelCourseMenu extends CourseMenu {
 

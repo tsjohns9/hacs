@@ -8,7 +8,6 @@ import java.io.FileReader;
  */
 
 public class Facade {
-	public UserInfoItem.USER_TYPE userType;
 	ClassCourseList courseList;
 	Person person;
 	private Course selectedCourse = null;
@@ -17,7 +16,7 @@ public class Facade {
 	public Facade() {
 	}
 
-	static public boolean login(UserInfoItem userinfoItem) {
+	public boolean login(UserInfoItem userinfoItem) {
 		Login login = new Login();
 		login.setModal(true);
 		login.show();
@@ -25,14 +24,6 @@ public class Facade {
 		userinfoItem.userType = login.getUserType();
 		return login.isExit();
 	}
-
-	/*
-	 * When click the add button of the CourseMenu, call this
-	 * function will new an assignment fill the required infomation this function
-	 * will call InstructorAssignmentMenu or StudentAssignmentMenu according to the
-	 * type of the user it will not update the course menu. the coursemenu need to
-	 * refreshed outside the function
-	 */
 
 	void addAssignment(Course course) {
 		AssignmentMenu theAssignmentMenu;
@@ -46,13 +37,6 @@ public class Facade {
 		course.addAssignment(assignment);
 	}
 
-	/*
-	 * When click the view button of the CourseMenu , call this function and pass
-	 * the pointer of the Assignment and the person pointer to this function this
-	 * function will new an assignment fill the required infomation this function
-	 * will call InstructorAssignmentMenu or StudentAssignmentMenu according to the
-	 * type of the user
-	 */
 	void viewAssignment(Assignment assignment) {
 		AssignmentMenu assignmentMenu;
 		if (person.type == UserInfoItem.USER_TYPE.Student) {
@@ -67,10 +51,6 @@ public class Facade {
 			System.out.println("no assignment selected");
 		}
 	}
-
-	/*
-	 * this function will grade the give Solution
-	 */
 
 	void gradeSolution(Solution solution) {
 		SolutionMenu solutionMenu = new SolutionMenu();
@@ -107,31 +87,26 @@ public class Facade {
 	}
 
 	/*
-	 * create a course list and intitialize it with the file CourseInfo.txt
+	 * create a course list and initialize it with the file CourseInfo.txt
 	 */
 	void createCourseList() {
 		courseList = new ClassCourseList();
 		courseList.initializeFromFile("CourseInfo.txt");
 	}
 
-	/*
-	 * call this function after create user, create courselist read the
-	 * UserCourse.txt file match the coursename with theCouresList attach the
-	 * Matched course object to the new create user Facade.thePerson.CourseList
-	 */
 	void attachCourseToUser() {
 		BufferedReader file;
 		try {
 			file = new BufferedReader(new FileReader("UserCourse.txt"));
 			String line, strUserName, strCourseName;
-			// not the EOF
+
 			while ((line = file.readLine()) != null) {
 				strUserName = getUserName(line);
 				strCourseName = getCourseName(line);
 
 				if (strUserName.compareTo(person.userName) == 0) {
 					selectedCourse = findCourseByCourseName(strCourseName);
-					// Find the Course in the CourseList--->attach
+
 					if (selectedCourse != null) {
 						person.addCourse(selectedCourse);
 					}
@@ -142,7 +117,7 @@ public class Facade {
 	}
 
 	/*
-	 * get the user name from aline UserName:CourseName
+	 * get the username from str UserName:CourseName
 	 */
 	private String getUserName(String str) {
 		int Sep = str.lastIndexOf(':');
@@ -150,19 +125,13 @@ public class Facade {
 	}
 
 	/*
-	 * get the CourseName from aline UserName:CourseName
+	 * get the CourseName from str UserName:CourseName
 	 */
 	private String getCourseName(String str) {
 		int Sep = str.lastIndexOf(':');
 		return str.substring(Sep + 1);
 	}
 
-	/*
-	 * show the course selection dlg, show the course attatched to theperson and
-	 * return the selected course and assign the course to the class member
-	 * theSelecteCourse, the Course Level to CourseLevel CourseLeve=0 High,
-	 * CourseLeve=1 Low
-	 */
 	public boolean selectCourse() {
 		CourseSelectDlg theDlg = new CourseSelectDlg();
 		selectedCourse = theDlg.showDlg(person.courseList);
@@ -170,12 +139,6 @@ public class Facade {
 		courseLevel = theDlg.courseLevel;
 		return theDlg.isLogout();
 	}
-
-	/*
-	 * call the thePerson.CreateCourseMenu according to the really object(student or
-	 * instructor) and the nCourseLevel it will call different menu creater and show
-	 * the menu;
-	 */
 
 	public boolean courseOperation() {
 		person.createCourseMenu(selectedCourse, courseLevel);

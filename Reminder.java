@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
  */
 
 public class Reminder extends JDialog {
-	ClassCourseList courseList;
 	JLabel upcomingAssignmentsLabel = new JLabel();
 	JLabel overdueAssignmentsLabel = new JLabel();
 	java.awt.List listUpcoming = new java.awt.List();

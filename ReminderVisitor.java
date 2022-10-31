@@ -2,17 +2,15 @@ package hacs;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 
 /**
  * @author Zahra Falah
  */
 
 /*
- * this class will iterate the course list attatched to on student and in turn
- * iterate the assignments of a course. after Function Visit(CourseList) it will
- * point to the location before the fist class, hasNext will retrun weather
- * there is next item. the next() will return the next Item Assignment;
+ * Iterates the course list attached to a student and in turn, and then iterate the assignments of a course.
+ * After Function Visit(CourseList) it will point to the location before the fist class.
+ * hasNext will return if there is another item. the next() will return the next Item Assignment;
  */
 
 public class ReminderVisitor extends NodeVisitor {
@@ -44,6 +42,7 @@ public class ReminderVisitor extends NodeVisitor {
 		int ntoday = calendar.get(Calendar.DAY_OF_YEAR);
 		calendar.setTime(assignment.dueDate);
 		int nDueDate = calendar.get(Calendar.DAY_OF_YEAR);
+
 		// upcoming
 		if (nDueDate <= (ntoday + 1) && nDueDate >= ntoday) {
 			reminder.listUpcoming.add("today is " + today + " " + assignment.getAssignmentName() + " Due Date is "

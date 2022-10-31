@@ -10,7 +10,7 @@ public class Instructor extends Person {
 	}
 
 	public CourseMenu createCourseMenu(Course theCourse, CourseLevel.COURSE_LEVEL theLevel) {
-		// 0: Highlevel defined in CourseSeletDlg.
+		// 0: Highlevel
 		if (theLevel == CourseLevel.COURSE_LEVEL.HighLevel) {
 			theCourseMenu = new HighLevelCourseMenu();
 			// 1: LowLevel

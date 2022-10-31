@@ -20,8 +20,6 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 	JButton buttonGrade = new JButton();
 	JButton buttonReport = new JButton();
 	JButton buttonClose = new JButton();
-	private final boolean bSubmit = false;
-	private Solution theSolution;
 	private Assignment theAssignment;
 
 	public InstructorAssignmentMenu() {
@@ -132,7 +130,7 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 		comboSolutionList.removeAllItems();
 		SolutionIterator iterator = new SolutionIterator(theAssignment.solutionList);
 		while (iterator.hasNext()) {
-			theSolution = (Solution) iterator.next();
+			Solution theSolution = (Solution) iterator.next();
 			comboSolutionList.addItem(theSolution);
 		}
 	}
