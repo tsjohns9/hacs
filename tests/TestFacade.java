@@ -40,6 +40,10 @@ public class TestFacade {
 		Person person = facade.getPerson();
 		Assertions.assertEquals(2, person.getCourseList().size());
 
+		Reminder reminder = new Reminder();
+		ReminderVisitor visitor = new ReminderVisitor(reminder);
+		visitor.visitFacade(facade);
+
 		// expect no courses since instructor name is not in the course list
 		facade = new Facade();
 		info = new UserInfoItem("instructor-name", UserInfoItem.USER_TYPE.Instructor);
