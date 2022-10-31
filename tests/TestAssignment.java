@@ -15,6 +15,7 @@ public class TestAssignment {
 		Date dueDate = new Date();
 		asn.setDueDate(dueDate);
 
+		// create a date with the same format that the isOverDue method uses
 		DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 		String expected = dateFormat.format(dueDate);
 		Assertions.assertEquals(expected, asn.getDueDateString());
@@ -23,6 +24,7 @@ public class TestAssignment {
 
 	@Test
 	public void testAssignmentAddSolution() {
+		// Test that an assignment can have more than one solution in the solutionList
 		Assignment asn = new Assignment();
 		Solution sol = new Solution();
 		asn.addSolution(sol);

@@ -18,9 +18,6 @@ public class SolutionIterator implements Iterator {
 	// CurrentSolutionNumber: point to the location before the first element
 	int currentSolutionNumber = -1;
 
-	public SolutionIterator() {
-	}
-
 	public SolutionIterator(SolutionList list) {
 		solutionlist = list;
 		moveToHead();

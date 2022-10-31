@@ -17,9 +17,6 @@ public class CourseIterator implements Iterator {
 	int currentCourseNumber = -1;
 
 
-	public CourseIterator() {
-	}
-
 	public CourseIterator(ClassCourseList courseList) {
 		this.courseList = courseList;
 	}

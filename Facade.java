@@ -31,7 +31,6 @@ public class Facade {
 		return login.isExit();
 	}
 
-	//functions for CourseMenu
 	/*
 	 * When click the add button of the CourseMenu, call this
 	 * function will new an assignment fill the required infomation this function
@@ -75,7 +74,7 @@ public class Facade {
 	}
 
 	/*
-	 * this function will grade the give Solution: theSolution this function calls
+	 * this function will grade the give Solution
 	 */
 
 	void gradeSolution(Solution solution) {

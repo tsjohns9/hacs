@@ -17,7 +17,7 @@ public class ClassCourseList extends ArrayList<Course> {
 	}
 
 	// initialize the list by reading from the file.
-	void initializeFromFile(String fileName) {
+	public void initializeFromFile(String fileName) {
 		try {
 			BufferedReader file;
 			String strCourseName;
@@ -27,11 +27,12 @@ public class ClassCourseList extends ArrayList<Course> {
 				theCourse = new Course(strCourseName, CourseLevel.COURSE_LEVEL.LowLevel);
 				add(theCourse);
 			}
-		} catch (Exception ignored) {
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
-	Course findCourseByCourseName(String courseName) {
+	public Course findCourseByCourseName(String courseName) {
 		for (Course course : this) {
 			Course theCourse;
 			theCourse =  course;
