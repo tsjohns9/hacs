@@ -37,7 +37,8 @@ public class Login extends JDialog {
 	public Login() {
 		try {
 			jbInit();
-			setSize(300, 300);
+			int size = 300;
+			setSize(size, size);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -51,18 +52,10 @@ public class Login extends JDialog {
 		jLabel2.setBounds(new Rectangle(23, 119, 80, 18));
 		loginButton.setText("Login");
 		loginButton.setBounds(new Rectangle(31, 212, 85, 28));
-		loginButton.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				loginButton(e);
-			}
-		});
+		loginButton.addActionListener(e -> loginButton(e));
 		buttonExit.setText("Exit");
 		buttonExit.setBounds(new Rectangle(180, 211, 97, 28));
-		buttonExit.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				buttonExit(e);
-			}
-		});
+		buttonExit.addActionListener(e -> buttonExit(e));
 		userNameText.setBounds(new Rectangle(119, 52, 144, 22));
 		passwordText.setBounds(new Rectangle(118, 119, 147, 22));
 		studentRadio.setSelected(true);
@@ -113,7 +106,7 @@ public class Login extends JDialog {
 	}
 
 	/*
-	 * get the user name from aline UserName:Password
+	 * get the user name from str UserName:Password
 	 */
 	private String getUserName(String str) {
 		int Sep = str.lastIndexOf(':');
@@ -121,7 +114,7 @@ public class Login extends JDialog {
 	}
 
 	/*
-	 * get the password from aline UserName:Password
+	 * get the password from str UserName:Password
 	 */
 	private String getPassword(String str) {
 		int Sep = str.lastIndexOf(':');

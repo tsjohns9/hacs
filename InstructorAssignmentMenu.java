@@ -39,42 +39,60 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 		}
 	}
 
-	private void jbInit() throws Exception {
+	private void jbInit() {
 		jLabel1.setText("Assignment Name");
-		jLabel1.setBounds(new Rectangle(25, 31, 118, 18));
+
+		int x1 = 25, y31 = 31, width1 = 118, height18 = 18;
+		jLabel1.setBounds(new Rectangle(x1, y31, width1, height18));
+
 		this.getContentPane().setLayout(null);
 		assignmentName.setText("jTextField1");
-		assignmentName.setBounds(new Rectangle(192, 31, 341, 22));
+
+		int x2 = 192, width2 = 341, height22 = 22;
+		assignmentName.setBounds(new Rectangle(x2, y31, width2, height22));
+
 		jLabel2.setText("Due Date");
-		jLabel2.setBounds(new Rectangle(28, 90, 113, 18));
+
+		int x28 = 28, y3 = 90, width3 = 113;
+		jLabel2.setBounds(new Rectangle(x28, y3, width3, height18));
+
 		textFieldDueDate.setText("tbDueDate");
-		textFieldDueDate.setBounds(new Rectangle(195, 87, 337, 22));
+
+		int x4 = 195, y4 = 87, width4 = 337;
+		textFieldDueDate.setBounds(new Rectangle(x4, y4, width4, height22));
+
 		jLabel3.setText("Suggested Solution");
-		jLabel3.setBounds(new Rectangle(28, 151, 118, 18));
+
+		int y5 = 151, width5 = 118;
+		jLabel3.setBounds(new Rectangle(x28, y5, width5, height18));
+
 		suggestedSolution.setText("jTextField2");
-		suggestedSolution.setBounds(new Rectangle(197, 149, 339, 22));
+
+		int x6 = 197, y6 = 149, width6 = 339;
+		suggestedSolution.setBounds(new Rectangle(x6, y6, width6, height22));
+
 		buttonGrade.setText("Grade");
-		buttonGrade.setBounds(new Rectangle(458, 199, 79, 29));
-		buttonGrade.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				buttonGrade(e);
-			}
-		});
+
+		int x7 = 458, y7 = 199, width79 = 79, height29 = 29;
+		buttonGrade.setBounds(new Rectangle(x7, y7, width79, height29));
+
+		buttonGrade.addActionListener(e -> buttonGrade(e));
 		buttonReport.setText("Report");
-		buttonReport.setBounds(new Rectangle(365, 249, 79, 29));
-		buttonReport.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				buttonReport(e);
-			}
-		});
+
+		int x8 = 365, y8 = 249;
+		buttonReport.setBounds(new Rectangle(x8, y8, width79, height29));
+
+		buttonReport.addActionListener(e -> buttonReport(e));
 		buttonClose.setText("Close");
-		buttonClose.setBounds(new Rectangle(86, 253, 79, 29));
-		buttonClose.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				buttonClose(e);
-			}
-		});
-		comboSolutionList.setBounds(new Rectangle(32, 204, 413, 22));
+
+		int x9 = 86, y9 = 253;
+		buttonClose.setBounds(new Rectangle(x9, y9, width79, height29));
+
+		buttonClose.addActionListener(e -> buttonClose(e));
+
+		int x10 = 32, y10 = 204, width10 = 413;
+		comboSolutionList.setBounds(new Rectangle(x10, y10, width10, height22));
+
 		this.getContentPane().add(jLabel1, null);
 		this.getContentPane().add(assignmentName, null);
 		this.getContentPane().add(jLabel2, null);
@@ -89,7 +107,6 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 
 	public void showMenu(Assignment assignment, Person person) {
 		theAssignment = assignment;
-		Solution theSolution;
 		assignmentName.setText(theAssignment.assignmentName);
 
 		DateFormat theDateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
@@ -104,9 +121,8 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 		DateFormat tempDateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 		try {
 			theAssignment.dueDate = tempDateFormat.parse(textFieldDueDate.getText());
-		} catch (Exception ee) {
+		} catch (Exception ignored) {
 		}
-		;
 		theAssignment.suggestSolution.solutionFileName = suggestedSolution.getText();
 		hide();
 	}
@@ -121,19 +137,19 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 	}
 
 	void buttonReport(ActionEvent e) {
-		SolutionIterator iter = new SolutionIterator(theAssignment.solutionList);
-		while (iter.hasNext()) {
-			Solution asolution = (Solution) iter.next();
-			asolution.setReported(true);
+		SolutionIterator iterator = new SolutionIterator(theAssignment.solutionList);
+		while (iterator.hasNext()) {
+			Solution sol = (Solution) iterator.next();
+			sol.setReported(true);
 		}
 		refreshSolutionList();
 	}
 
 	private void refreshSolutionList() {
 		comboSolutionList.removeAllItems();
-		SolutionIterator SolIter = new SolutionIterator(theAssignment.solutionList);
-		while (SolIter.hasNext()) {
-			theSolution = (Solution) SolIter.next();
+		SolutionIterator iterator = new SolutionIterator(theAssignment.solutionList);
+		while (iterator.hasNext()) {
+			theSolution = (Solution) iterator.next();
 			comboSolutionList.addItem(theSolution);
 		}
 	}

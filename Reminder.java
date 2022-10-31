@@ -23,7 +23,8 @@ public class Reminder extends JDialog {
 		try {
 			jbInit();
 			setModal(true);
-			setSize(400, 386);
+			int width = 400, height = 386;
+			setSize(width, height);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -48,7 +49,6 @@ public class Reminder extends JDialog {
 	}
 
 	void showReminder(ClassCourseList list) {
-		Assignment assignment;
 		ReminderVisitor visitor = new ReminderVisitor(this);
 		visitor.visitFacade(Hacs.facade);
 		show();
