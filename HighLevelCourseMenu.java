@@ -35,12 +35,10 @@ public class HighLevelCourseMenu extends CourseMenu {
 		assignmentAddButton.addActionListener(e -> assignmentAddButton(e));
 		assignmentAddButton.setText("Add");
 
-		int x1 = 389, y1 = 54, width1 = 79, height1 = 29;
-		assignmentAddButton.setBounds(new Rectangle(x1, y1, width1, height1));
+		assignmentAddButton.setBounds(new Rectangle(Numbers.n389, Numbers.n54, Numbers.n79, Numbers.n29));
 		optionAddButton.setText("Add");
 
-		int x2 = 390, y2 = 125;
-		optionAddButton.setBounds(new Rectangle(x2, y1, width1, height1));
+		optionAddButton.setBounds(new Rectangle(Numbers.n390, Numbers.n125, Numbers.n79, Numbers.n29));
 
 		this.getContentPane().add(assignmentAddButton, null);
 		this.getContentPane().add(optionAddButton, null);
@@ -49,23 +47,19 @@ public class HighLevelCourseMenu extends CourseMenu {
 	void showRadios() {
 		assignmentRadio.setText("Assignment");
 
-		int x1 = 21, y1 = 55, width1 = 103, height1 = 26;
-		assignmentRadio.setBounds(new Rectangle(x1, y1, width1, height1));
+		assignmentRadio.setBounds(new Rectangle(Numbers.n21, Numbers.n55, Numbers.n103, Numbers.n26));
 
 		this.getContentPane().add(assignmentRadio, null);
 		optionRadio.setText("HighLevel Presentation");
 
-		int y2 = 128;
-		optionRadio.setBounds(new Rectangle(x1, y2, width1, height1));
+		optionRadio.setBounds(new Rectangle(Numbers.n21, Numbers.n128, Numbers.n103, Numbers.n26));
 		this.getContentPane().add(optionRadio, null);
 	}
 
 	void showComboBoxes() {
-		int x1 = 140, y1 = 57, width1 = 126, height1 = 22;
-		assignmentComboBox.setBounds(new Rectangle(x1, y1, width1, height1));
+		assignmentComboBox.setBounds(new Rectangle(Numbers.n140,Numbers.n57, Numbers.n126, Numbers.n22));
 
-		int x2 = 137, y2 = 127;
-		optionCombo.setBounds(new Rectangle(x2, y2, width1, height1));
+		optionCombo.setBounds(new Rectangle(Numbers.n137, Numbers.n127, Numbers.n126, Numbers.n22));
 		this.getContentPane().add(assignmentComboBox, null);
 		this.getContentPane().add(optionCombo, null);
 		refresh();
@@ -74,21 +68,18 @@ public class HighLevelCourseMenu extends CourseMenu {
 	void showViewButtons() {
 		assignmentViewButton.setText("View");
 
-		int x1 = 290, y1 = 54, width1 = 79, height1 = 29;
-		assignmentViewButton.setBounds(new Rectangle(x1, y1, width1, height1));
+		assignmentViewButton.setBounds(new Rectangle(Numbers.n290, Numbers.n54, Numbers.n79, Numbers.n29));
 		assignmentViewButton.addActionListener(e -> assignmentViewButton(e));
 		optionViewButton.setText("View");
 
-		int y2 = 124;
-		optionViewButton.setBounds(new Rectangle(x1, y2, width1, height1));
+		optionViewButton.setBounds(new Rectangle(Numbers.n290, Numbers.n124, Numbers.n79, Numbers.n29));
 		this.getContentPane().add(assignmentViewButton, null);
 		this.getContentPane().add(optionViewButton, null);
 	}
 
 	void showLabel() {
 		assignmentContentLabel.setText("AssigmentContent");
-		int x1 = 23, y1 = 186, width1 = 432, height1 = 99;
-		assignmentContentLabel.setBounds(new Rectangle(x1, y1, width1, height1));
+		assignmentContentLabel.setBounds(new Rectangle(Numbers.n23, Numbers.n186, Numbers.n432, Numbers.n99));
 		this.getContentPane().add(assignmentContentLabel, null);
 	}
 }

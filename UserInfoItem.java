@@ -11,7 +11,8 @@ package hacs;
 
 public class UserInfoItem {
 	String userName;
-	USER_TYPE userType; // 0 : Student, 1: Instructor
+	// 0 : Student, 1: Instructor
+	USER_TYPE userType;
 
 	public enum USER_TYPE {Student, Instructor}
 }

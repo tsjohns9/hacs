@@ -1,4 +1,5 @@
 import hacs.Course;
+import hacs.CourseLevel;
 import hacs.CourseMenu;
 import hacs.Student;
 import org.junit.Test;
@@ -10,11 +11,11 @@ public class TestStudent {
 	@Test
 	public void testStudentCreateCourseMenu() {
 		Student student = new Student();
-		Course course = new Course("course-name", 500);
-		CourseMenu menu = student.createCourseMenu(course, 0);
+		Course course = new Course("course-name", CourseLevel.COURSE_LEVEL.HighLevel);
+		CourseMenu menu = student.createCourseMenu(course, CourseLevel.COURSE_LEVEL.HighLevel);
 		Assertions.assertNotNull(menu);
 
-		menu = student.createCourseMenu(course, 1);
+		menu = student.createCourseMenu(course, CourseLevel.COURSE_LEVEL.LowLevel);
 		Assertions.assertNotNull(menu);
 	}
 }

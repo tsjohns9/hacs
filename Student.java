@@ -15,10 +15,10 @@ public class Student extends Person {
 		type = UserInfoItem.USER_TYPE.Student;
 	}
 
-	public CourseMenu createCourseMenu(Course course, int level) {
+	public CourseMenu createCourseMenu(Course course, CourseLevel.COURSE_LEVEL level) {
 
 		// 0: Highlevel defined in CourseSelectDlg.
-		if (level == 0) {
+		if (level == CourseLevel.COURSE_LEVEL.HighLevel) {
 			theCourseMenu = new HighLevelCourseMenu();
 			// 1: LowLevel
 		} else {

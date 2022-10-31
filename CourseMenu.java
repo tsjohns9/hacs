@@ -39,25 +39,20 @@ abstract public class CourseMenu extends JDialog {
 			e.printStackTrace();
 		}
 		setModal(true);
-		int width = 503;
-		int height = 294;
-		setSize(width, height);
+		setSize(Numbers.n503, Numbers.n294);
 	}
 
 	private void jbInit() {
 		buttonChangeCourse.setText("ChangeCourse");
 
-		int x = 101, y = 211, width = 73, height = 37;
-		buttonChangeCourse.setBounds(new Rectangle(x, y, width, height));
+		buttonChangeCourse.setBounds(new Rectangle(Numbers.n101, Numbers.n211, Numbers.n73, Numbers.n37));
 
 		buttonChangeCourse.addActionListener(e -> buttonChangeCourse(e));
 		this.getContentPane().setLayout(null);
 		this.setTitle("");
 		buttonLogout.setText("Logout");
 
-		x = 267;
-		y = 215;
-		buttonLogout.setBounds(new Rectangle(x, y, width, height));
+		buttonLogout.setBounds(new Rectangle(Numbers.n267, Numbers.n215, Numbers.n73, Numbers.n37));
 
 		buttonLogout.addActionListener(e -> buttonLogout(e));
 		this.getContentPane().add(buttonChangeCourse, null);
@@ -90,8 +85,8 @@ abstract public class CourseMenu extends JDialog {
 	}
 
 	void assignmentViewButton(ActionEvent e) {
-		Assignment theAss = (Assignment) assignmentComboBox.getSelectedItem();
-		Hacs.facade.viewAssignment(theAss);
+		Assignment assignment = (Assignment) assignmentComboBox.getSelectedItem();
+		Hacs.facade.viewAssignment(assignment);
 	}
 
 	void refresh() {

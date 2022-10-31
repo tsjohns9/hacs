@@ -21,11 +21,10 @@ public class ClassCourseList extends ArrayList<Course> {
 		try {
 			BufferedReader file;
 			String strCourseName = null;
-			file = new BufferedReader(new FileReader("CourseInfo.txt"));
+			file = new BufferedReader(new FileReader(fileName));
 			while ((strCourseName = file.readLine()) != null) {
 				Course theCourse;
-				theCourse = new Course(strCourseName, 0);
-				//				theCourse.CourseName= strCourseName;
+				theCourse = new Course(strCourseName, CourseLevel.COURSE_LEVEL.LowLevel);
 				add(theCourse);
 			}
 		} catch (Exception ignored) {

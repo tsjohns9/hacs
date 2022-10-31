@@ -17,7 +17,7 @@ public class Facade {
 	ClassCourseList courseList;
 	Person person;
 	private Course selectedCourse = null;
-	private int courseLevel = 0;
+	private CourseLevel.COURSE_LEVEL courseLevel = CourseLevel.COURSE_LEVEL.HighLevel;
 
 	public Facade() {
 	}
@@ -33,7 +33,7 @@ public class Facade {
 
 	//functions for CourseMenu
 	/*
-	 * When click the add button of the CourseMenu , call this function this
+	 * When click the add button of the CourseMenu, call this
 	 * function will new an assignment fill the required infomation this function
 	 * will call InstructorAssignmentMenu or StudentAssignmentMenu according to the
 	 * type of the user it will not update the course menu. the coursemenu need to
@@ -42,7 +42,6 @@ public class Facade {
 
 	void addAssignment(Course course) {
 		AssignmentMenu theAssignmentMenu;
-		// student
 		if (person.type == UserInfoItem.USER_TYPE.Student) {
 			theAssignmentMenu = new StudentAssignmentMenu();
 		} else {
@@ -62,17 +61,19 @@ public class Facade {
 	 */
 	void viewAssignment(Assignment assignment) {
 		AssignmentMenu assignmentMenu;
-		// student
 		if (person.type == UserInfoItem.USER_TYPE.Student) {
 			assignmentMenu = new StudentAssignmentMenu();
 		} else {
 			assignmentMenu = new InstructorAssignmentMenu();
 		}
 
-		assignmentMenu.showMenu(assignment, person);
+		if (assignment != null) {
+			assignmentMenu.showMenu(assignment, person);
+		} else {
+			System.out.println("no assignment selected");
+		}
 	}
 
-	// functions for InstructorAssignmentMenu
 	/*
 	 * this function will grade the give Solution: theSolution this function calls
 	 */
@@ -93,7 +94,6 @@ public class Facade {
 		}
 	}
 
-	// functions for StudentAssignmentMenu
 	void SubmitSolution(Assignment assignment, Solution solution) {
 		assignment.addSolution(solution);
 	}
@@ -104,7 +104,6 @@ public class Facade {
 	}
 
 	void CreateUser(UserInfoItem userinfoitem) {
-		// student
 		if (userinfoitem.userType == UserInfoItem.USER_TYPE.Student) {
 			person = new Student();
 		} else {
@@ -130,12 +129,12 @@ public class Facade {
 		BufferedReader file;
 		try {
 			file = new BufferedReader(new FileReader("UserCourse.txt"));
-			String aline, strUserName, strCourseName;
+			String line, strUserName, strCourseName;
 			// not the EOF
-			while ((aline = file.readLine()) != null) {
-				strUserName = getUserName(aline);
-				strCourseName = getCourseName(aline);
-				// the UserName mateches
+			while ((line = file.readLine()) != null) {
+				strUserName = getUserName(line);
+				strCourseName = getCourseName(line);
+
 				if (strUserName.compareTo(person.userName) == 0) {
 					selectedCourse = findCourseByCourseName(strCourseName);
 					// Find the Course in the CourseList--->attach
@@ -151,17 +150,17 @@ public class Facade {
 	/*
 	 * get the user name from aline UserName:CourseName
 	 */
-	private String getUserName(String aline) {
-		int Sep = aline.lastIndexOf(':');
-		return aline.substring(0, Sep);
+	private String getUserName(String str) {
+		int Sep = str.lastIndexOf(':');
+		return str.substring(0, Sep);
 	}
 
 	/*
 	 * get the CourseName from aline UserName:CourseName
 	 */
-	private String getCourseName(String aline) {
-		int Sep = aline.lastIndexOf(':');
-		return aline.substring(Sep + 1, aline.length());
+	private String getCourseName(String str) {
+		int Sep = str.lastIndexOf(':');
+		return str.substring(Sep + 1);
 	}
 
 	/*

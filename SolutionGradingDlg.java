@@ -21,7 +21,7 @@ public class SolutionGradingDlg extends JDialog {
 	public SolutionGradingDlg() {
 		try {
 			jbInit();
-			setSize(316, 186);
+			setSize(Numbers.n316, Numbers.n186);
 			setModal(true);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -30,13 +30,13 @@ public class SolutionGradingDlg extends JDialog {
 
 	private void jbInit() {
 		jLabel1.setText("Solution File Name");
-		jLabel1.setBounds(new Rectangle(23, 30, 121, 18));
+		jLabel1.setBounds(new Rectangle(Numbers.n23, Numbers.n30, Numbers.n121, Numbers.n18));
 		this.getContentPane().setLayout(null);
-		textFieldGrade.setBounds(new Rectangle(25, 66, 100, 22));
+		textFieldGrade.setBounds(new Rectangle(Numbers.n25, Numbers.n66, Numbers.n100, Numbers.n22));
 		buttonOK.setText("OK");
-		buttonOK.setBounds(new Rectangle(217, 67, 79, 29));
+		buttonOK.setBounds(new Rectangle(Numbers.n217, Numbers.n67, Numbers.n79, Numbers.n29));
 		buttonOK.addActionListener(e -> okButtonAction(e));
-		labelSolutionFileName.setBounds(new Rectangle(212, 34, 163, 18));
+		labelSolutionFileName.setBounds(new Rectangle(Numbers.n212, Numbers.n34, Numbers.n163, Numbers.n18));
 		this.getContentPane().add(jLabel1, null);
 		this.getContentPane().add(textFieldGrade, null);
 		this.getContentPane().add(labelSolutionFileName, null);

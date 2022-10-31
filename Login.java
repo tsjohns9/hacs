@@ -31,14 +31,12 @@ public class Login extends JDialog {
 	ButtonGroup buttonGroup1 = new ButtonGroup();
 
 	private String userBox = null;
-	// default to Student
 	private USER_TYPE userType = USER_TYPE.Student;
 
 	public Login() {
 		try {
 			jbInit();
-			int size = 300;
-			setSize(size, size);
+			setSize(Numbers.n300, Numbers.n300);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -47,22 +45,22 @@ public class Login extends JDialog {
 	private void jbInit() {
 		this.getContentPane().setLayout(null);
 		jLabel1.setText("UserName");
-		jLabel1.setBounds(new Rectangle(26, 52, 80, 18));
+		jLabel1.setBounds(new Rectangle(Numbers.n26, Numbers.n52, Numbers.n80, Numbers.n18));
 		jLabel2.setText("Password");
-		jLabel2.setBounds(new Rectangle(23, 119, 80, 18));
+		jLabel2.setBounds(new Rectangle(Numbers.n23, Numbers.n119, Numbers.n80, Numbers.n18));
 		loginButton.setText("Login");
-		loginButton.setBounds(new Rectangle(31, 212, 85, 28));
+		loginButton.setBounds(new Rectangle(Numbers.n31, Numbers.n212, Numbers.n85, Numbers.n28));
 		loginButton.addActionListener(e -> loginButton(e));
 		buttonExit.setText("Exit");
-		buttonExit.setBounds(new Rectangle(180, 211, 97, 28));
+		buttonExit.setBounds(new Rectangle(Numbers.n180, Numbers.n211, Numbers.n97, Numbers.n28));
 		buttonExit.addActionListener(e -> buttonExit(e));
-		userNameText.setBounds(new Rectangle(119, 52, 144, 22));
-		passwordText.setBounds(new Rectangle(118, 119, 147, 22));
+		userNameText.setBounds(new Rectangle(Numbers.n119, Numbers.n52, Numbers.n144, Numbers.n22));
+		passwordText.setBounds(new Rectangle(Numbers.n118, Numbers.n119, Numbers.n147, Numbers.n22));
 		studentRadio.setSelected(true);
 		studentRadio.setText("Student");
-		studentRadio.setBounds(new Rectangle(37, 164, 103, 26));
+		studentRadio.setBounds(new Rectangle(Numbers.n37, Numbers.n164, Numbers.n103, Numbers.n26));
 		instructorRadio.setText("Instructor");
-		instructorRadio.setBounds(new Rectangle(177, 162, 103, 26));
+		instructorRadio.setBounds(new Rectangle(Numbers.n177, Numbers.n162, Numbers.n103, Numbers.n26));
 		this.getContentPane().add(jLabel1, null);
 		this.getContentPane().add(jLabel2, null);
 		this.getContentPane().add(loginButton, null);
@@ -85,7 +83,7 @@ public class Login extends JDialog {
 				file = new BufferedReader(new FileReader("StuInfo.txt"));
 			} else {
 				userType = USER_TYPE.Instructor;
-				file = new BufferedReader(new FileReader("InsInfor.txt"));
+				file = new BufferedReader(new FileReader("InsInfo.txt"));
 			}
 			userBox = userNameText.getText();
 			String PasswordBox = new String(passwordText.getPassword());

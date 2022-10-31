@@ -13,8 +13,8 @@ import java.awt.event.ActionEvent;
 
 public class Reminder extends JDialog {
 	ClassCourseList courseList;
-	JLabel jLabel1 = new JLabel();
-	JLabel jLabel2 = new JLabel();
+	JLabel upcomingAssignmentsLabel = new JLabel();
+	JLabel overdueAssignmentsLabel = new JLabel();
 	java.awt.List listUpcoming = new java.awt.List();
 	java.awt.List listOverdue = new java.awt.List();
 	Button buttonOK = new Button();
@@ -23,26 +23,25 @@ public class Reminder extends JDialog {
 		try {
 			jbInit();
 			setModal(true);
-			int width = 400, height = 386;
-			setSize(width, height);
+			setSize(Numbers.n400, Numbers.n386);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	private void jbInit() {
-		jLabel1.setText("Upcoming assignments");
-		jLabel1.setBounds(new Rectangle(38, 40, 159, 17));
+		upcomingAssignmentsLabel.setText("Upcoming assignments");
+		upcomingAssignmentsLabel.setBounds(new Rectangle(Numbers.n38, Numbers.n40, Numbers.n159, Numbers.n17));
 		this.getContentPane().setLayout(null);
-		jLabel2.setText("OverDue Assignments");
-		jLabel2.setBounds(new Rectangle(39, 160, 161, 17));
-		listUpcoming.setBounds(new Rectangle(29, 65, 340, 79));
-		listOverdue.setBounds(new Rectangle(31, 187, 337, 85));
+		overdueAssignmentsLabel.setText("OverDue Assignments");
+		overdueAssignmentsLabel.setBounds(new Rectangle(Numbers.n39, Numbers.n160, Numbers.n161, Numbers.n17));
+		listUpcoming.setBounds(new Rectangle(Numbers.n29, Numbers.n65, Numbers.n340, Numbers.n79));
+		listOverdue.setBounds(new Rectangle(Numbers.n31, Numbers.n187, Numbers.n337, Numbers.n85));
 		buttonOK.setLabel("OK");
-		buttonOK.setBounds(new Rectangle(149, 308, 67, 37));
+		buttonOK.setBounds(new Rectangle(Numbers.n149, Numbers.n308, Numbers.n67, Numbers.n37));
 		buttonOK.addActionListener(e -> okButtonAction(e));
-		this.getContentPane().add(jLabel1, null);
-		this.getContentPane().add(jLabel2, null);
+		this.getContentPane().add(upcomingAssignmentsLabel, null);
+		this.getContentPane().add(overdueAssignmentsLabel, null);
 		this.getContentPane().add(listUpcoming, null);
 		this.getContentPane().add(listOverdue, null);
 		this.getContentPane().add(buttonOK, null);

@@ -22,11 +22,10 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 	JTextField suggestedSolution = new JTextField();
 	JLabel jLabel1 = new JLabel();
 	JLabel jLabel2 = new JLabel();
-	JLabel jLabel3 = new JLabel();
+	JLabel suggestedSolutionLabel = new JLabel();
 	JButton buttonGrade = new JButton();
 	JButton buttonReport = new JButton();
 	JButton buttonClose = new JButton();
-	// class AssignmentMenu
 	private final boolean bSubmit = false;
 	private Solution theSolution;
 	private Assignment theAssignment;
@@ -42,62 +41,52 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 	private void jbInit() {
 		jLabel1.setText("Assignment Name");
 
-		int x1 = 25, y31 = 31, width1 = 118, height18 = 18;
-		jLabel1.setBounds(new Rectangle(x1, y31, width1, height18));
+		jLabel1.setBounds(new Rectangle(Numbers.n25, Numbers.n31, Numbers.n118, Numbers.n18));
 
 		this.getContentPane().setLayout(null);
 		assignmentName.setText("jTextField1");
 
-		int x2 = 192, width2 = 341, height22 = 22;
-		assignmentName.setBounds(new Rectangle(x2, y31, width2, height22));
+		assignmentName.setBounds(new Rectangle(Numbers.n192, Numbers.n22, Numbers.n341, Numbers.n22));
 
 		jLabel2.setText("Due Date");
 
-		int x28 = 28, y3 = 90, width3 = 113;
-		jLabel2.setBounds(new Rectangle(x28, y3, width3, height18));
+		jLabel2.setBounds(new Rectangle(Numbers.n28, Numbers.n90, Numbers.n113, Numbers.n18));
 
 		textFieldDueDate.setText("tbDueDate");
 
-		int x4 = 195, y4 = 87, width4 = 337;
-		textFieldDueDate.setBounds(new Rectangle(x4, y4, width4, height22));
+		textFieldDueDate.setBounds(new Rectangle(Numbers.n195, Numbers.n87, Numbers.n337, Numbers.n22));
 
-		jLabel3.setText("Suggested Solution");
+		suggestedSolutionLabel.setText("Suggested Solution");
 
-		int y5 = 151, width5 = 118;
-		jLabel3.setBounds(new Rectangle(x28, y5, width5, height18));
+		suggestedSolutionLabel.setBounds(new Rectangle(Numbers.n28, Numbers.n151, Numbers.n118, Numbers.n18));
 
 		suggestedSolution.setText("jTextField2");
 
-		int x6 = 197, y6 = 149, width6 = 339;
-		suggestedSolution.setBounds(new Rectangle(x6, y6, width6, height22));
+		suggestedSolution.setBounds(new Rectangle(Numbers.n197, Numbers.n149, Numbers.n339, Numbers.n22));
 
 		buttonGrade.setText("Grade");
 
-		int x7 = 458, y7 = 199, width79 = 79, height29 = 29;
-		buttonGrade.setBounds(new Rectangle(x7, y7, width79, height29));
+		buttonGrade.setBounds(new Rectangle(Numbers.n458, Numbers.n199, Numbers.n79, Numbers.n29));
 
 		buttonGrade.addActionListener(e -> buttonGrade(e));
 		buttonReport.setText("Report");
 
-		int x8 = 365, y8 = 249;
-		buttonReport.setBounds(new Rectangle(x8, y8, width79, height29));
+		buttonReport.setBounds(new Rectangle(Numbers.n365, Numbers.n249, Numbers.n79, Numbers.n29));
 
 		buttonReport.addActionListener(e -> buttonReport(e));
 		buttonClose.setText("Close");
 
-		int x9 = 86, y9 = 253;
-		buttonClose.setBounds(new Rectangle(x9, y9, width79, height29));
+		buttonClose.setBounds(new Rectangle(Numbers.n86, Numbers.n253, Numbers.n79, Numbers.n29));
 
 		buttonClose.addActionListener(e -> buttonClose(e));
 
-		int x10 = 32, y10 = 204, width10 = 413;
-		comboSolutionList.setBounds(new Rectangle(x10, y10, width10, height22));
+		comboSolutionList.setBounds(new Rectangle(Numbers.n32, Numbers.n204, Numbers.n413, Numbers.n22));
 
 		this.getContentPane().add(jLabel1, null);
 		this.getContentPane().add(assignmentName, null);
 		this.getContentPane().add(jLabel2, null);
 		this.getContentPane().add(textFieldDueDate, null);
-		this.getContentPane().add(jLabel3, null);
+		this.getContentPane().add(suggestedSolutionLabel, null);
 		this.getContentPane().add(suggestedSolution, null);
 		this.getContentPane().add(buttonClose, null);
 		this.getContentPane().add(comboSolutionList, null);

@@ -17,28 +17,30 @@ public class Hacs {
 	}
 
 	public static void main(String[] args) {
-		// String strUsername;
-		// String strUserType = null;
 		UserInfoItem userinfoitem = new UserInfoItem();
 		facade.createCourseList();
 		while (true) {
 			boolean bExit;
 			bExit = facade.login(userinfoitem);
-			if (bExit)
+			if (bExit) {
 				break;
-			// userinfoitem.strUserName = "Inst1";
-			// userinfoitem.UserType = 1;
+			}
+
 			facade.CreateUser(userinfoitem);
 			facade.attachCourseToUser();
-			// if is a student remind him of the due date
-			if (userinfoitem.userType == UserInfoItem.USER_TYPE.Student)
+
+			// if this is a student, then remind him of the due date
+			if (userinfoitem.userType == UserInfoItem.USER_TYPE.Student) {
 				facade.Remind();
-			boolean bLogout = false;
-			while (!bLogout) {
-				bLogout = facade.selectCourse();
-				if (bLogout)
+			}
+
+			boolean btnLogout = false;
+			while (!btnLogout) {
+				btnLogout = facade.selectCourse();
+				if (btnLogout) {
 					break;
-				bLogout = facade.courseOperation();
+				}
+				btnLogout = facade.courseOperation();
 			}
 		}
 	}

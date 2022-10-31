@@ -58,7 +58,6 @@ public class ReminderVisitor extends NodeVisitor {
 					+ assignment.getDueDateString());
 		}
 		if (nDueDate < ntoday) {
-			// put to the
 			reminder.listOverdue.add(assignment.assignmentName + " Due Date is " + assignment.getDueDateString());
 		}
 

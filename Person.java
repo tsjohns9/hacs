@@ -23,7 +23,7 @@ abstract public class Person {
 		courseList = new ClassCourseList();
 	}
 
-	abstract public CourseMenu createCourseMenu(Course theCourse, int theLevel);
+	abstract public CourseMenu createCourseMenu(Course theCourse, CourseLevel.COURSE_LEVEL courseLevel);
 
 	public void showAddButton() {
 		theCourseMenu.showAddButtons();
