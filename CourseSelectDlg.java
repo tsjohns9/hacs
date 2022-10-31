@@ -5,10 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 /**
- * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
- *
  * @author Zahra Falah
- * @version 1.0
  */
 
 public class CourseSelectDlg extends JDialog {

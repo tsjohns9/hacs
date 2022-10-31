@@ -6,10 +6,7 @@ import java.awt.event.ActionEvent;
 import java.util.Date;
 
 /**
- * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
- *
  * @author Zahra Falah
- * @version 1.0
  */
 
 public class StudentAssignmentMenu extends AssignmentMenu {

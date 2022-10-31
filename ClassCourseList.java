@@ -5,10 +5,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 /**
- * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
- *
  * @author Zahra Falah
- * @version 2.0 update to Java 8
  */
 
 public class ClassCourseList extends ArrayList<Course> {

@@ -4,13 +4,7 @@ import javax.swing.*;
 
 
 /**
- * Title:        HACS
- * Description:
- * Copyright:    Copyright (c) 2002
- * Company:      msu
- *
  * @author Zahra Falah
- * @version 1.0
  */
 
 abstract public class AssignmentMenu extends JDialog {
