@@ -7,18 +7,17 @@ import java.util.Date;
  * Copyright: Copyright (c) 2002 Company: Department of Computer Science and
  * Engineering, Michigan State University
  *
- * @author Ji Zhang, Wei Zhu
- * @author mjfindler
+ * @author Zahra Falah
  * @version 2.0
  * <p>
  * update to Java 8
  */
 
 public class Solution {
-	String theAuthor = "";
-	String SolutionFileName = "";
-	Date theSubmitData = new Date();
-	int theGrade;
+	String author = "";
+	String solutionFileName = "";
+	Date submitDate = new Date();
+	int grade;
 	boolean reported = false;
 
 	public Solution() {
@@ -27,7 +26,7 @@ public class Solution {
 	@Override
 	public String toString() {
 		String string;
-		string = theAuthor + "  " + SolutionFileName + " Grade=" + getGradeInt() + "  ";
+		string = author + "  " + solutionFileName + " Grade=" + getGradeInt() + "  ";
 		if (isReported())
 			string += "reported";
 		else
@@ -38,13 +37,13 @@ public class Solution {
 
 	String getGradeString() {
 		if (isReported())
-			return "" + theGrade;
+			return "" + grade;
 		else
 			return "-1";
 	}
 
 	int getGradeInt() {
-		return theGrade;
+		return grade;
 	}
 
 	public boolean isReported() {

@@ -7,8 +7,7 @@ import java.util.Iterator;
 /**
  * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
  *
- * @author Zhang ji Zhu Wei
- * @author mjfindler
+ * @author Zahra Falah
  * @version 2.0
  * <p>
  * update to Java 8
@@ -23,17 +22,17 @@ import java.util.Iterator;
 
 public class ReminderVisitor extends NodeVisitor {
 
-	Reminder m_Reminder;
+	Reminder reminder;
 
 	public ReminderVisitor() {
 	}
 
 	public ReminderVisitor(Reminder reminder) {
-		m_Reminder = reminder;
+		this.reminder = reminder;
 	}
 
 	public void visitFacade(Facade facade) {
-		CourseIterator courseList = new CourseIterator(facade.theCourseList);
+		CourseIterator courseList = new CourseIterator(facade.courseList);
 		while (courseList.hasNext()) {
 			Course course = (Course) courseList.next();
 			course.accept(this);
@@ -41,9 +40,7 @@ public class ReminderVisitor extends NodeVisitor {
 	}
 
 	public void visitCourse(Course course) {
-		Iterator<Assignment> assignmentList = course.assignmentList.listIterator();
-		while (assignmentList.hasNext()) {
-			Assignment assignment = (Assignment) assignmentList.next();
+		for (Assignment assignment : course.assignmentList) {
 			assignment.accept(this);
 		}
 	}
@@ -53,16 +50,16 @@ public class ReminderVisitor extends NodeVisitor {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(today);
 		int ntoday = calendar.get(Calendar.DAY_OF_YEAR);
-		calendar.setTime(assignment.DueDate);
+		calendar.setTime(assignment.dueDate);
 		int nDueDate = calendar.get(Calendar.DAY_OF_YEAR);
 		// upcoming
 		if (nDueDate <= (ntoday + 1) && nDueDate >= ntoday) {
-			m_Reminder.listUpcoming.add("today is " + today.toString() + " " + assignment.AssName + " Due Date is "
+			reminder.listUpcoming.add("today is " + today + " " + assignment.assignmentName + " Due Date is "
 					+ assignment.getDueDateString());
 		}
 		if (nDueDate < ntoday) {
 			// put to the
-			m_Reminder.listOverdue.add(assignment.AssName + " Due Date is " + assignment.getDueDateString());
+			reminder.listOverdue.add(assignment.assignmentName + " Due Date is " + assignment.getDueDateString());
 		}
 
 	}

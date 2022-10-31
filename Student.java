@@ -5,20 +5,20 @@ package hacs;
  * Copyright: Copyright (c) 2002 Company: Department of Computer Science and
  * Engineering, Michigan State University
  *
- * @author Ji Zhang, Wei Zhu
+ * @author Zahra Falah
  * @version 1.0
  */
 
 public class Student extends Person {
 
 	public Student() {
-		type = 0; // type=0: student
+		type = UserInfoItem.USER_TYPE.Student;
 	}
 
-	public CourseMenu CreateCourseMenu(Course theCourse, int theLevel) {
+	public CourseMenu createCourseMenu(Course course, int level) {
 
 		// 0: Highlevel defined in CourseSelectDlg.
-		if (theLevel == 0) {
+		if (level == 0) {
 			theCourseMenu = new HighLevelCourseMenu();
 			// 1: LowLevel
 		} else {
@@ -28,10 +28,10 @@ public class Student extends Person {
 	}
 
 	@Override
-	public boolean ShowMenu() {
-		super.ShowMenu();
+	public boolean showMenu() {
+		super.showMenu();
 		showViewButtons();
-		showComboxes();
+		showComboBoxes();
 		showRadios();
 		show();
 		return ifLogout();

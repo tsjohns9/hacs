@@ -8,27 +8,25 @@ import java.util.Date;
 /**
  * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
  *
- * @author Zhang ji Zhu Wei
+ * @author Zahra Falah
  * @version 1.0
  */
 
 public class StudentAssignmentMenu extends AssignmentMenu {
 
-	JLabel lAssignmentName = new JLabel();
-	JLabel lDueDate = new JLabel();
-	JTextField tbSolution = new JTextField();
-	JLabel lSuggestedSolution = new JLabel();
-	JLabel lGrade = new JLabel();
-	JButton bSubmit = new JButton();
-	JButton bCancel = new JButton();
+	JLabel assignmentNameLabel = new JLabel();
+	JLabel dueDateLabel = new JLabel();
+	JTextField solutionTextField = new JTextField();
+	JLabel suggestedSolutionLabel = new JLabel();
+	JLabel gradeLabel = new JLabel();
+	JButton submitBtn = new JButton();
+	JButton cancelBtn = new JButton();
 	JLabel jLabel1 = new JLabel();
 	JLabel jLabel3 = new JLabel();
 	JLabel jLabel5 = new JLabel();
 	JLabel jLabel6 = new JLabel();
 	JLabel jLabel7 = new JLabel();
 	private boolean boolSubmit = false;
-	private Solution theSolution;
-	private Assignment theAssignment;
 
 	public StudentAssignmentMenu() {
 		try {
@@ -38,96 +36,86 @@ public class StudentAssignmentMenu extends AssignmentMenu {
 		}
 	}
 
-	private void jbInit() throws Exception {
+	private void jbInit() {
 		jLabel1.setText("Assignment : ");
 		jLabel1.setBounds(new Rectangle(20, 36, 91, 18));
 		this.getContentPane().setLayout(null);
-		lAssignmentName.setText("jLabel2");
-		lAssignmentName.setBounds(new Rectangle(258, 35, 282, 18));
+		assignmentNameLabel.setText("jLabel2");
+		assignmentNameLabel.setBounds(new Rectangle(258, 35, 282, 18));
 		jLabel3.setText("Due Date");
 		jLabel3.setBounds(new Rectangle(21, 81, 92, 18));
-		lDueDate.setText("jLabel4");
-		lDueDate.setBounds(new Rectangle(254, 82, 294, 18));
+		dueDateLabel.setText("jLabel4");
+		dueDateLabel.setBounds(new Rectangle(254, 82, 294, 18));
 		jLabel5.setText("Solution");
 		jLabel5.setBounds(new Rectangle(24, 128, 93, 18));
-		tbSolution.setText("jTextField1");
-		tbSolution.setBounds(new Rectangle(251, 127, 211, 22));
+		solutionTextField.setText("jTextField1");
+		solutionTextField.setBounds(new Rectangle(251, 127, 211, 22));
 		jLabel6.setText("Suggested Solution");
 		jLabel6.setBounds(new Rectangle(24, 174, 117, 18));
 		jLabel7.setText("Grade");
 		jLabel7.setBounds(new Rectangle(23, 224, 41, 18));
-		lSuggestedSolution.setText("jLabel8");
-		lSuggestedSolution.setBounds(new Rectangle(259, 169, 201, 18));
-		lGrade.setText("jLabel9");
-		lGrade.setBounds(new Rectangle(258, 226, 41, 18));
-		bSubmit.setText("Submit");
-		bSubmit.setBounds(new Rectangle(476, 124, 79, 29));
-		bSubmit.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				bSubmit_actionPerformed(e);
-			}
-		});
-		bCancel.setText("Cancel");
-		bCancel.setBounds(new Rectangle(475, 164, 79, 29));
-		bCancel.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				bCancel_actionPerformed(e);
-			}
-		});
+		suggestedSolutionLabel.setText("jLabel8");
+		suggestedSolutionLabel.setBounds(new Rectangle(259, 169, 201, 18));
+		gradeLabel.setText("jLabel9");
+		gradeLabel.setBounds(new Rectangle(258, 226, 41, 18));
+		submitBtn.setText("Submit");
+		submitBtn.setBounds(new Rectangle(476, 124, 79, 29));
+		submitBtn.addActionListener(e -> submitBtnAction(e));
+		cancelBtn.setText("Cancel");
+		cancelBtn.setBounds(new Rectangle(475, 164, 79, 29));
+		cancelBtn.addActionListener(e -> cancelBtnAction(e));
 		this.getContentPane().add(jLabel1, null);
 		this.getContentPane().add(jLabel3, null);
 		this.getContentPane().add(jLabel5, null);
 		this.getContentPane().add(jLabel6, null);
-		this.getContentPane().add(lAssignmentName, null);
-		this.getContentPane().add(lDueDate, null);
-		this.getContentPane().add(tbSolution, null);
+		this.getContentPane().add(assignmentNameLabel, null);
+		this.getContentPane().add(dueDateLabel, null);
+		this.getContentPane().add(solutionTextField, null);
 		this.getContentPane().add(jLabel7, null);
-		this.getContentPane().add(lSuggestedSolution, null);
-		this.getContentPane().add(lGrade, null);
-		this.getContentPane().add(bSubmit, null);
-		this.getContentPane().add(bCancel, null);
+		this.getContentPane().add(suggestedSolutionLabel, null);
+		this.getContentPane().add(gradeLabel, null);
+		this.getContentPane().add(submitBtn, null);
+		this.getContentPane().add(cancelBtn, null);
 	}
 
 	/*
 	 * check if the student has already had a solution or not. if not , create a new
 	 * solution for the student. after showing the solution attatch the soluiton;
 	 */
-	public void ShowMenu(Assignment assignment, Person thePerson) {
-		theAssignment = assignment;
-		SolutionIterator theIter = theAssignment.GetSolutionIterator();
-		theSolution = (Solution) theIter.next(thePerson.UserName);
-		if (theSolution == null) {
-			tbSolution.setText("");
-			lGrade.setText("-1");
+	public void showMenu(Assignment assignment, Person person) {
+		SolutionIterator theIter = assignment.getSolutionIterator();
+		Solution solution = (Solution) theIter.next(person.userName);
+		if (solution == null) {
+			solutionTextField.setText("");
+			gradeLabel.setText("-1");
 		} else {
-			tbSolution.setText(theSolution.SolutionFileName);
-			lGrade.setText(theSolution.getGradeString());
-
+			solutionTextField.setText(solution.solutionFileName);
+			gradeLabel.setText(solution.getGradeString());
 		}
 
-		lAssignmentName.setText(theAssignment.AssName);
-		lDueDate.setText(theAssignment.DueDate.toString());
-		lSuggestedSolution.setText(theAssignment.SuggestSolution.SolutionFileName);
+		assignmentNameLabel.setText(assignment.assignmentName);
+		dueDateLabel.setText(assignment.dueDate.toString());
+		suggestedSolutionLabel.setText(assignment.suggestSolution.solutionFileName);
 
 		show();
 
-		if (boolSubmit == true) {
-			if (theSolution == null) {
-				theSolution = new Solution();
-				theAssignment.AddSolution(theSolution);
+		if (boolSubmit) {
+			if (solution == null) {
+				solution = new Solution();
+				assignment.addSolution(solution);
 			}
-			theSolution.theAuthor = thePerson.UserName;
-			theSolution.SolutionFileName = tbSolution.getText();
-			theSolution.theSubmitData = new Date();
+			solution.author = person.userName;
+			solution.solutionFileName = solutionTextField.getText();
+			solution.submitDate = new Date();
 		}
 	}
 
-	void bSubmit_actionPerformed(ActionEvent e) {
+	void submitBtnAction(ActionEvent e) {
 		boolSubmit = true;
 		hide();
 	}
 
-	void bCancel_actionPerformed(ActionEvent e) {
+	void cancelBtnAction(ActionEvent e) {
 		boolSubmit = false;
 		hide();
 	}

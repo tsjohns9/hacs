@@ -7,38 +7,38 @@ import java.util.Iterator;
  * Copyright: Copyright (c) 2002 Company: Department of Computer Science and
  * Engineering, Michigan State University
  *
- * @author Ji Zhang, Wei Zhu
+ * @author Zahra Falah
  * @version 1.0
  */
 
 abstract public class Person {
-	int type = 0; // type=0 : student, type=1 instructor
-	String UserName;
-	ClassCourseList CourseList;
+	UserInfoItem.USER_TYPE type = UserInfoItem.USER_TYPE.Student;
+	String userName;
+	ClassCourseList courseList;
 	CourseMenu theCourseMenu;
-	Course CurrentCourse;
-	Assignment CurrentAssignment;
+	Course currentCourse;
+	Assignment currentAssignment;
 
 	public Person() {
-		CourseList = new ClassCourseList();
+		courseList = new ClassCourseList();
 	}
 
-	abstract public CourseMenu CreateCourseMenu(Course theCourse, int theLevel);
+	abstract public CourseMenu createCourseMenu(Course theCourse, int theLevel);
 
 	public void showAddButton() {
-		theCourseMenu.ShowAddButtons();
+		theCourseMenu.showAddButtons();
 	}
 
 	public void showViewButtons() {
-		theCourseMenu.ShowViewButtons();
+		theCourseMenu.showViewButtons();
 	}
 
-	public void showComboxes() {
-		theCourseMenu.ShowComboxes();
+	public void showComboBoxes() {
+		theCourseMenu.showComboBoxes();
 	}
 
 	public void showRadios() {
-		theCourseMenu.ShowRadios();
+		theCourseMenu.showRadios();
 	}
 
 	public void show() {
@@ -50,24 +50,24 @@ abstract public class Person {
 	}
 
 	// show the assignment list
-	public boolean ShowMenu() {
+	public boolean showMenu() {
 		// create a iterator for the assignment list
 		// Iterator theIter=new ListIterator(CurrentCourse.AssList );
-		Iterator theIter = CurrentCourse.assignmentList.iterator();
-		theCourseMenu.theCourse = CurrentCourse;
+		Iterator<Assignment> assignmentIterator = currentCourse.assignmentList.iterator();
+		theCourseMenu.course = currentCourse;
 		Assignment theAssignment;
-		while (theIter.hasNext()) {
-			theAssignment = (Assignment) theIter.next();
-			theCourseMenu.AssignmentCombox.addItem(theAssignment);
+		while (assignmentIterator.hasNext()) {
+			theAssignment = (Assignment) assignmentIterator.next();
+			theCourseMenu.assignmentComboBox.addItem(theAssignment);
 		}
 		return false;
 	}
 
-	public ClassCourseList GetCourseList() {
-		return CourseList;
+	public ClassCourseList getCourseList() {
+		return courseList;
 	}
 
-	public void AddCourse(Course theCourse) {
-		CourseList.add(theCourse);
+	public void addCourse(Course theCourse) {
+		courseList.add(theCourse);
 	}
 }

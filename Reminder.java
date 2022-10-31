@@ -7,12 +7,12 @@ import java.awt.event.ActionEvent;
 /**
  * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
  *
- * @author Zhang ji Zhu Wei
+ * @author Zahra Falah
  * @version 1.0
  */
 
 public class Reminder extends JDialog {
-	ClassCourseList CourseList;
+	ClassCourseList courseList;
 	JLabel jLabel1 = new JLabel();
 	JLabel jLabel2 = new JLabel();
 	java.awt.List listUpcoming = new java.awt.List();
@@ -29,7 +29,7 @@ public class Reminder extends JDialog {
 		}
 	}
 
-	private void jbInit() throws Exception {
+	private void jbInit() {
 		jLabel1.setText("Upcoming assignments");
 		jLabel1.setBounds(new Rectangle(38, 40, 159, 17));
 		this.getContentPane().setLayout(null);
@@ -39,11 +39,7 @@ public class Reminder extends JDialog {
 		listOverdue.setBounds(new Rectangle(31, 187, 337, 85));
 		buttonOK.setLabel("OK");
 		buttonOK.setBounds(new Rectangle(149, 308, 67, 37));
-		buttonOK.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				buttonOK_actionPerformed(e);
-			}
-		});
+		buttonOK.addActionListener(e -> okButtonAction(e));
 		this.getContentPane().add(jLabel1, null);
 		this.getContentPane().add(jLabel2, null);
 		this.getContentPane().add(listUpcoming, null);
@@ -51,14 +47,14 @@ public class Reminder extends JDialog {
 		this.getContentPane().add(buttonOK, null);
 	}
 
-	void showReminder(ClassCourseList courseList) {
+	void showReminder(ClassCourseList list) {
 		Assignment assignment;
 		ReminderVisitor visitor = new ReminderVisitor(this);
-		visitor.visitFacade(Hacs.theFacade);
+		visitor.visitFacade(Hacs.facade);
 		show();
 	}
 
-	void buttonOK_actionPerformed(ActionEvent e) {
+	void okButtonAction(ActionEvent e) {
 		hide();
 	}
 }

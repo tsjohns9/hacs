@@ -3,8 +3,7 @@ package hacs;
 /**
  * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
  *
- * @author Zhang ji Zhu Wei
- * @author mjfindler
+ * @author Zahra Falah
  * @version 2.0
  * <p>
  * Update to Java 8
@@ -12,7 +11,7 @@ package hacs;
 
 public class Hacs {
 
-	static Facade theFacade = new Facade();
+	static Facade facade = new Facade();
 
 	public Hacs() {
 	}
@@ -21,27 +20,26 @@ public class Hacs {
 		// String strUsername;
 		// String strUserType = null;
 		UserInfoItem userinfoitem = new UserInfoItem();
-		theFacade.CreateCourseList();
+		facade.createCourseList();
 		while (true) {
-			boolean bExit = false;
-			bExit = theFacade.Login(userinfoitem);
+			boolean bExit;
+			bExit = facade.login(userinfoitem);
 			if (bExit)
 				break;
 			// userinfoitem.strUserName = "Inst1";
 			// userinfoitem.UserType = 1;
-			theFacade.CreateUser(userinfoitem);
-			theFacade.AttachCourseToUser();
+			facade.CreateUser(userinfoitem);
+			facade.attachCourseToUser();
 			// if is a student remind him of the due date
-			if (userinfoitem.UserType == UserInfoItem.USER_TYPE.Student)
-				theFacade.Remind();
+			if (userinfoitem.userType == UserInfoItem.USER_TYPE.Student)
+				facade.Remind();
 			boolean bLogout = false;
 			while (!bLogout) {
-				bLogout = theFacade.SelectCourse();
+				bLogout = facade.selectCourse();
 				if (bLogout)
 					break;
-				bLogout = theFacade.CourseOperation();
+				bLogout = facade.courseOperation();
 			}
 		}
-		//  System.out.println(userinfoitem.strUserName +userinfoitem.UserType );
 	}
 }

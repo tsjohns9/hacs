@@ -6,29 +6,28 @@ import java.io.FileReader;
 /**
  * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
  *
- * @author Zhang ji Zhu Wei
- * @author mjfindler
+ * @author Zahra Falah
  * @version 2.0
  * <p>
  * Update to Jave 8
  */
 
 public class Facade {
-	public int UserType;
-	ClassCourseList theCourseList;
-	Person thePerson;
-	private Course theSelecteCourse = null;
-	private int nCourseLevel = 0;
+	public UserInfoItem.USER_TYPE userType;
+	ClassCourseList courseList;
+	Person person;
+	private Course selectedCourse = null;
+	private int courseLevel = 0;
 
 	public Facade() {
 	}
 
-	static public boolean Login(UserInfoItem userinfoItem) {
+	static public boolean login(UserInfoItem userinfoItem) {
 		Login login = new Login();
 		login.setModal(true);
 		login.show();
-		userinfoItem.strUserName = login.GetUserName();
-		userinfoItem.UserType = login.GetUserType();
+		userinfoItem.userName = login.getUserName();
+		userinfoItem.userType = login.getUserType();
 		return login.isExit();
 	}
 
@@ -41,17 +40,17 @@ public class Facade {
 	 * refreshed outside the function
 	 */
 
-	void AddAssignment(Course theCourse) {
+	void addAssignment(Course course) {
 		AssignmentMenu theAssignmentMenu;
 		// student
-		if (thePerson.type == 0) {
+		if (person.type == UserInfoItem.USER_TYPE.Student) {
 			theAssignmentMenu = new StudentAssignmentMenu();
 		} else {
 			theAssignmentMenu = new InstructorAssignmentMenu();
 		}
-		Assignment theAssignment = new Assignment();
-		theAssignmentMenu.ShowMenu(theAssignment, thePerson);
-		theCourse.AddAssignment(theAssignment);
+		Assignment assignment = new Assignment();
+		theAssignmentMenu.showMenu(assignment, person);
+		course.addAssignment(assignment);
 	}
 
 	/*
@@ -61,16 +60,16 @@ public class Facade {
 	 * will call InstructorAssignmentMenu or StudentAssignmentMenu according to the
 	 * type of the user
 	 */
-	void ViewAssignment(Assignment theAssignment) {
-		AssignmentMenu theAssignmentMenu;
+	void viewAssignment(Assignment assignment) {
+		AssignmentMenu assignmentMenu;
 		// student
-		if (thePerson.type == 0) {
-			theAssignmentMenu = new StudentAssignmentMenu();
+		if (person.type == UserInfoItem.USER_TYPE.Student) {
+			assignmentMenu = new StudentAssignmentMenu();
 		} else {
-			theAssignmentMenu = new InstructorAssignmentMenu();
+			assignmentMenu = new InstructorAssignmentMenu();
 		}
 
-		theAssignmentMenu.ShowMenu(theAssignment, thePerson);
+		assignmentMenu.showMenu(assignment, person);
 	}
 
 	// functions for InstructorAssignmentMenu
@@ -78,15 +77,15 @@ public class Facade {
 	 * this function will grade the give Solution: theSolution this function calls
 	 */
 
-	void GradeSolution(Solution theSolution) {
+	void gradeSolution(Solution solution) {
 		SolutionMenu solutionMenu = new SolutionMenu();
-		solutionMenu.ShowMenu(theSolution);
+		solutionMenu.ShowMenu(solution);
 	}
 
-	void ReportSolutions(Assignment theAssignment) {
+	void reportSolutions(Assignment assignment) {
 		Solution theSolution;
 		SolutionIterator theSolutionIterator;
-		theSolutionIterator = theAssignment.GetSolutionIterator();
+		theSolutionIterator = assignment.getSolutionIterator();
 		theSolution = (Solution) theSolutionIterator.next();
 		while (theSolution != null) {
 			theSolution.setReported(true);
@@ -95,31 +94,31 @@ public class Facade {
 	}
 
 	// functions for StudentAssignmentMenu
-	void SubmitSolution(Assignment theAssignment, Solution theSolution) {
-		theAssignment.AddSolution(theSolution);
+	void SubmitSolution(Assignment assignment, Solution solution) {
+		assignment.addSolution(solution);
 	}
 
 	void Remind() {
 		Reminder theReminder = new Reminder();
-		theReminder.showReminder(thePerson.GetCourseList());
+		theReminder.showReminder(person.getCourseList());
 	}
 
 	void CreateUser(UserInfoItem userinfoitem) {
 		// student
-		if (userinfoitem.UserType == UserInfoItem.USER_TYPE.Student) {
-			thePerson = new Student();
+		if (userinfoitem.userType == UserInfoItem.USER_TYPE.Student) {
+			person = new Student();
 		} else {
-			thePerson = new Instructor();
+			person = new Instructor();
 		}
-		thePerson.UserName = userinfoitem.strUserName;
+		person.userName = userinfoitem.userName;
 	}
 
 	/*
 	 * create a course list and intitialize it with the file CourseInfo.txt
 	 */
-	void CreateCourseList() {
-		theCourseList = new ClassCourseList();
-		theCourseList.InitializeFromFile("CourseInfo.txt");
+	void createCourseList() {
+		courseList = new ClassCourseList();
+		courseList.initializeFromFile("CourseInfo.txt");
 	}
 
 	/*
@@ -127,33 +126,32 @@ public class Facade {
 	 * UserCourse.txt file match the coursename with theCouresList attach the
 	 * Matched course object to the new create user Facade.thePerson.CourseList
 	 */
-	void AttachCourseToUser() {
+	void attachCourseToUser() {
 		BufferedReader file;
 		try {
 			file = new BufferedReader(new FileReader("UserCourse.txt"));
 			String aline, strUserName, strCourseName;
 			// not the EOF
 			while ((aline = file.readLine()) != null) {
-				strUserName = GetUserName(aline);
-				strCourseName = GetCourseName(aline);
+				strUserName = getUserName(aline);
+				strCourseName = getCourseName(aline);
 				// the UserName mateches
-				if (strUserName.compareTo(thePerson.UserName) == 0) {
-					theSelecteCourse = FindCourseByCourseName(strCourseName);
+				if (strUserName.compareTo(person.userName) == 0) {
+					selectedCourse = findCourseByCourseName(strCourseName);
 					// Find the Course in the CourseList--->attach
-					if (theSelecteCourse != null) {
-						thePerson.AddCourse(theSelecteCourse);
+					if (selectedCourse != null) {
+						person.addCourse(selectedCourse);
 					}
 				}
 			}
-		} catch (Exception ee) {
-			;
+		} catch (Exception ignored) {
 		}
 	}
 
 	/*
 	 * get the user name from aline UserName:CourseName
 	 */
-	private String GetUserName(String aline) {
+	private String getUserName(String aline) {
 		int Sep = aline.lastIndexOf(':');
 		return aline.substring(0, Sep);
 	}
@@ -161,7 +159,7 @@ public class Facade {
 	/*
 	 * get the CourseName from aline UserName:CourseName
 	 */
-	private String GetCourseName(String aline) {
+	private String getCourseName(String aline) {
 		int Sep = aline.lastIndexOf(':');
 		return aline.substring(Sep + 1, aline.length());
 	}
@@ -172,11 +170,11 @@ public class Facade {
 	 * theSelecteCourse, the Course Level to CourseLevel CourseLeve=0 High,
 	 * CourseLeve=1 Low
 	 */
-	public boolean SelectCourse() {
+	public boolean selectCourse() {
 		CourseSelectDlg theDlg = new CourseSelectDlg();
-		theSelecteCourse = theDlg.ShowDlg(thePerson.CourseList);
-		thePerson.CurrentCourse = theSelecteCourse;
-		nCourseLevel = theDlg.nCourseLevel;
+		selectedCourse = theDlg.showDlg(person.courseList);
+		person.currentCourse = selectedCourse;
+		courseLevel = theDlg.courseLevel;
 		return theDlg.isLogout();
 	}
 
@@ -186,10 +184,10 @@ public class Facade {
 	 * the menu;
 	 */
 
-	public boolean CourseOperation() {
-		thePerson.CreateCourseMenu(theSelecteCourse, nCourseLevel);
+	public boolean courseOperation() {
+		person.createCourseMenu(selectedCourse, courseLevel);
 		// 0: logout 1 select another course
-		return thePerson.ShowMenu();
+		return person.showMenu();
 	}
 
 	/*
@@ -197,8 +195,8 @@ public class Facade {
 	 * CourseIterator for the List 2 Find the Course with the Iterator return the
 	 * pointer of the Course if not fine, return null;
 	 */
-	private Course FindCourseByCourseName(String strCourseName) {
-		CourseIterator Iterator = new CourseIterator(theCourseList);
+	private Course findCourseByCourseName(String strCourseName) {
+		CourseIterator Iterator = new CourseIterator(courseList);
 		return (Course) Iterator.next(strCourseName);
 	}
 

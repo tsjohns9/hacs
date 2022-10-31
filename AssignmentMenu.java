@@ -9,7 +9,7 @@ import javax.swing.*;
  * Copyright:    Copyright (c) 2002
  * Company:      msu
  *
- * @author Zhang ji Zhu Wei
+ * @author Zahra Falah
  * @version 1.0
  */
 
@@ -19,5 +19,5 @@ abstract public class AssignmentMenu extends JDialog {
 		setSize(575, 330);
 	}
 
-	abstract void ShowMenu(Assignment ass, Person per);
+	abstract void showMenu(Assignment assignment, Person person);
 }

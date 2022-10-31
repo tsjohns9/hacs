@@ -7,8 +7,7 @@ import java.util.ArrayList;
 /**
  * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
  *
- * @author Zhang ji Zhu Wei
- * @author mjfindler
+ * @author Zahra Falah
  * @version 2.0 update to Java 8
  */
 
@@ -18,7 +17,7 @@ public class ClassCourseList extends ArrayList<Course> {
 	}
 
 	// initialize the list by reading from the file.
-	void InitializeFromFile(String theFileName) {
+	void initializeFromFile(String fileName) {
 		try {
 			BufferedReader file;
 			String strCourseName = null;
@@ -29,17 +28,15 @@ public class ClassCourseList extends ArrayList<Course> {
 				//				theCourse.CourseName= strCourseName;
 				add(theCourse);
 			}
-		} catch (Exception ee) {
-			;
+		} catch (Exception ignored) {
 		}
 	}
 
-	Course FindCourseByCourseName(String CourseName) {
-		int nCourseCount = size();
-		for (int i = 0; i < nCourseCount; i++) {
+	Course findCourseByCourseName(String courseName) {
+		for (Course course : this) {
 			Course theCourse;
-			theCourse = (Course) get(i);
-			if (theCourse.CourseName.compareTo(CourseName) == 0)
+			theCourse =  course;
+			if (theCourse.courseName.compareTo(courseName) == 0)
 				return theCourse;
 		}
 		return null;

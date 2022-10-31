@@ -8,34 +8,33 @@ import java.util.ArrayList;
  * Copyright:    Copyright (c) 2002
  * Company:      Department of Computer Science and Engineering, Michigan State University
  *
- * @author Ji Zhang, Wei Zhu
- * @author mjfindler
+ * @author Zahra Falah
  * @version 2.0
  * Update to Java 8
  */
 
 public class Course {
-	public ArrayList<Assignment> assignmentList = new ArrayList<Assignment>();
-	String CourseName;
-	int NumOfAss;
-	int CourseLevel;
+	public ArrayList<Assignment> assignmentList = new ArrayList<>();
+	String courseName;
+	int numberOfAssignments;
+	int courseLevel;
 
 
-	public Course(String strCourse, int theLevel) {
-		this.CourseName = strCourse;
+	public Course(String courseName, int courseLevel) {
+		this.courseName = courseName;
 
 		// 0 HighLeve presentation    1  LowLevel Experiment
-		this.CourseLevel = theLevel;
+		this.courseLevel = courseLevel;
 		// this.AssList = NULL;
-		this.NumOfAss = 0;
+		this.numberOfAssignments = 0;
 	}
 
-	public void AddAssignment(Assignment newAss) {
+	public void addAssignment(Assignment newAss) {
 		assignmentList.add(newAss);
 	}
 
 	public String toString() {
-		return CourseName;
+		return courseName;
 	}
 
 	void accept(NodeVisitor visitor) {

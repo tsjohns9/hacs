@@ -8,40 +8,40 @@ import java.util.Iterator;
  * Copyright:    Copyright (c) 2002
  * Company:      msu
  *
- * @author Zhang ji Zhu Wei
+ * @author Zahra Falah
  * @version 1.0
  */
 
 public class CourseIterator implements Iterator {
-	ClassCourseList theCourseList;
-	int CurrentCourseNumber = -1;
+	ClassCourseList courseList;
+	int currentCourseNumber = -1;
 
 
 	public CourseIterator() {
 	}
 
 	public CourseIterator(ClassCourseList courseList) {
-		theCourseList = courseList;
+		this.courseList = courseList;
 	}
 
 	public boolean hasNext() {
-		if (CurrentCourseNumber >= theCourseList.size() - 1)
+		if (currentCourseNumber >= courseList.size() - 1)
 			return false;
 		else
 			return true;
 	}
 
 	public Object next() {
-		if (hasNext() == true) {
-			CurrentCourseNumber++;
-			return theCourseList.get(CurrentCourseNumber);
+		if (hasNext()) {
+			currentCourseNumber++;
+			return courseList.get(currentCourseNumber);
 		} else {
 			return null;
 		}
 	}
 
 	public void remove() {
-		theCourseList.remove(CurrentCourseNumber);
+		courseList.remove(currentCourseNumber);
 	}
 
 	// the next Course that fits the given CourseName
@@ -56,6 +56,5 @@ public class CourseIterator implements Iterator {
 		}
 		return null;
 	}
-
 
 }
