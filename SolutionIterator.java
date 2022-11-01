@@ -39,7 +39,7 @@ public class SolutionIterator implements Iterator {
 		Solution theSolution;
 		theSolution = (Solution) next();
 		while (theSolution != null) {
-			if (UserName.compareTo(theSolution.author) == 0) {
+			if (UserName.compareTo(theSolution.getAuthor()) == 0) {
 				return theSolution;
 			}
 			theSolution = (Solution) next();

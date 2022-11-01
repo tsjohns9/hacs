@@ -7,35 +7,57 @@ import java.util.Date;
  */
 
 public class Solution {
-	String author = "";
-	String solutionFileName = "";
+	private String author = "";
+
+	private String solutionFileName = "";
 	Date submitDate = new Date();
-	int grade;
+	private int grade;
 	boolean reported = false;
 
 	public Solution() {
 	}
 
+	public String getSolutionFileName() {
+		return solutionFileName;
+	}
+
+	public void setSolutionFileName(String solutionFileName) {
+		this.solutionFileName = solutionFileName;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
 	@Override
 	public String toString() {
 		String string;
-		string = author + "  " + solutionFileName + " Grade=" + getGradeInt() + "  ";
+		string = author + " " + solutionFileName + " Grade=" + getGradeInt() + " ";
 		if (isReported())
 			string += "reported";
 		else
 			string += "not reported";
 
-		return (string);
+		return string;
 	}
 
-	String getGradeString() {
+	public String getGradeString() {
 		if (isReported())
 			return "" + grade;
 		else
 			return "-1";
 	}
 
-	int getGradeInt() {
+	public void setGradeInt(int grade){
+		this.grade = grade;
+	}
+
+
+	public int getGradeInt() {
 		return grade;
 	}
 

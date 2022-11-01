@@ -92,7 +92,7 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 
 		DateFormat theDateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 		textFieldDueDate.setText(theDateFormat.format(theAssignment.dueDate));
-		suggestedSolution.setText(theAssignment.suggestSolution.solutionFileName);
+		suggestedSolution.setText(theAssignment.suggestSolution.getSolutionFileName());
 		refreshSolutionList();
 		show();
 	}
@@ -104,7 +104,7 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 			theAssignment.dueDate = tempDateFormat.parse(textFieldDueDate.getText());
 		} catch (Exception ignored) {
 		}
-		theAssignment.suggestSolution.solutionFileName = suggestedSolution.getText();
+		theAssignment.suggestSolution.setSolutionFileName(suggestedSolution.getText());
 		hide();
 	}
 

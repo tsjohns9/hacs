@@ -30,5 +30,6 @@ public class ListIterator implements Iterator<Object> {
 
 	public void remove() {
 		list.remove(currentNumber);
+		currentNumber--;
 	}
 }

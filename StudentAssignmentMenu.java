@@ -86,13 +86,13 @@ public class StudentAssignmentMenu extends AssignmentMenu {
 			solutionTextField.setText("");
 			gradeLabel.setText("-1");
 		} else {
-			solutionTextField.setText(solution.solutionFileName);
+			solutionTextField.setText(solution.getSolutionFileName());
 			gradeLabel.setText(solution.getGradeString());
 		}
 
 		assignmentNameLabel.setText(assignment.getAssignmentName());
 		dueDateLabel.setText(assignment.dueDate.toString());
-		suggestedSolutionLabel.setText(assignment.suggestSolution.solutionFileName);
+		suggestedSolutionLabel.setText(assignment.suggestSolution.getSolutionFileName());
 
 		show();
 
@@ -101,8 +101,8 @@ public class StudentAssignmentMenu extends AssignmentMenu {
 				solution = new Solution();
 				assignment.addSolution(solution);
 			}
-			solution.author = person.userName;
-			solution.solutionFileName = solutionTextField.getText();
+			solution.setAuthor(person.userName);
+			solution.setSolutionFileName(solutionTextField.getText());
 			solution.submitDate = new Date();
 		}
 	}
